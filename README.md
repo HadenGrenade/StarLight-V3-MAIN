@@ -44,5 +44,4 @@ Feel free to contact me on Discord: handgrenade#0133
 
 ## Credits
 https://github.com/designer1337/csgo-cheat-base
-Pysik
-Handgrenade 
+me.

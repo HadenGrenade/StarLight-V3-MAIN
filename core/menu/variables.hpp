@@ -37,6 +37,7 @@ namespace variables {
 	inline bool backtrack = false;
 	inline float aim_fov = 0;
 	inline float smooth = 0;
+	inline bool mode1 = 0;
 
 	inline float aim_fov_rifle = 0;
 	inline float smooth_rifle = 0;

@@ -98,6 +98,7 @@ void menu::render()
 			{
 				zgui::combobox(XorStr("Aimbot Selection"), { XorStr("Rifles"), XorStr("Pistols"), XorStr("Snipers") }, variables::weapon_config);
 				zgui::checkbox(XorStr("Aimbot"), variables::aimbot); // 175
+				zgui::checkbox(XorStr("Silent Aim"), variables::mode1); // 
 				switch (variables::weapon_config) {
 				case 0: {
 					zgui::slider_float(XorStr("Aimbot FOV"), 0.f, 10.f, variables::aim_fov_rifle);

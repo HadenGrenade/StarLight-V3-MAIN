@@ -100,6 +100,7 @@ struct aimbot_ctx_t {
 	float smooth;
 	float fov;
 	vec3_t hitbox_pos;
+	bool mode1;
 };
 
 namespace aimbot {

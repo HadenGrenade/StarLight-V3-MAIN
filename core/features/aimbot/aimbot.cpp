@@ -200,6 +200,8 @@ void aimbot::weapon_cfg(weapon_t* weapon) {
 
 int aimbot::get_hitbox(int hitpoint)
 {
+	menu::JunkCodeTutorial();
+
 	if (hitpoint != hitbox_head && hitpoint != hitbox_neck)
 		return hitbox_chest;
 
@@ -226,6 +228,7 @@ int aimbot::get_hitbox(player_t* player, matrix_t* matrix, vec3_t eye_pos) {
 
 void aimbot::run(c_usercmd* cmd)
 {
+	menu::JunkCodeTutorial();
 	if (!csgo::local_player ||
 		!csgo::local_player->is_alive())
 		return;
@@ -303,7 +306,7 @@ void aimbot::run(c_usercmd* cmd)
 		if (!math::sanitize_angle(final_angle))
 			return;
 		cmd->viewangles = final_angle;
-		if (ctx.mode != 2)
+		if (ctx.mode1)
 			interfaces::engine->set_view_angles(cmd->viewangles);
 	}
 }

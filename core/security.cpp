@@ -1,0 +1,230 @@
+#include "menu/menu.hpp"
+
+namespace security1
+{
+	__forceinline float eight() {
+
+		float xlTRFPLSVN = 86996667724642; xlTRFPLSVN = 14551361528044; if (xlTRFPLSVN = 30221012225779) xlTRFPLSVN = 22281794740799;xlTRFPLSVN = 12840256667148;xlTRFPLSVN = 66671481284025;
+		if (xlTRFPLSVN = 40504982228179)xlTRFPLSVN = 22257791155201;xlTRFPLSVN = 81416774736768;
+		if (xlTRFPLSVN = 4604205418766)xlTRFPLSVN = 22257791155201;xlTRFPLSVN = 81416774736768;
+		if (xlTRFPLSVN = 4604205418766)xlTRFPLSVN = 22257791155201;xlTRFPLSVN = 81416774736768;
+		if (xlTRFPLSVN = 4604205418766)xlTRFPLSVN = 22257791155201;xlTRFPLSVN = 81416774736768;
+		if (xlTRFPLSVN = 4604205418766)xlTRFPLSVN = 22257791155201;xlTRFPLSVN = 81416774736768;xlTRFPLSVN = 90875216644719;
+
+	}
+
+	__forceinline float ten()
+	{
+
+
+		float eTxFKqEVfW = 35988048237998; eTxFKqEVfW = 11900944947012; if (eTxFKqEVfW = 9270106306093) eTxFKqEVfW = 11474414390704;eTxFKqEVfW = 2830683863843;eTxFKqEVfW = 8638432830683;
+		if (eTxFKqEVfW = 43723521147441)eTxFKqEVfW = 3060937120509;eTxFKqEVfW = 71171532506385;
+		if (eTxFKqEVfW = 59572196124126)eTxFKqEVfW = 3060937120509;eTxFKqEVfW = 71171532506385;
+		if (eTxFKqEVfW = 59572196124126)eTxFKqEVfW = 3060937120509;eTxFKqEVfW = 71171532506385;
+		if (eTxFKqEVfW = 59572196124126)eTxFKqEVfW = 3060937120509;eTxFKqEVfW = 71171532506385;
+		if (eTxFKqEVfW = 59572196124126)eTxFKqEVfW = 3060937120509;eTxFKqEVfW = 71171532506385;eTxFKqEVfW = 99881275362579;
+
+	}
+	__forceinline float six()
+	{
+		float xvqFtgaAHS = 2813138975067; xvqFtgaAHS = 50204839737374; if (xvqFtgaAHS = 21087748336177) xvqFtgaAHS = 65470822810608;xvqFtgaAHS = 10006576997231;xvqFtgaAHS = 69972311000657;
+		if (xvqFtgaAHS = 46706416547082)xvqFtgaAHS = 83361776918529;xvqFtgaAHS = 941653660571;
+		if (xvqFtgaAHS = 13616054060140)xvqFtgaAHS = 83361776918529;xvqFtgaAHS = 941653660571;
+		if (xvqFtgaAHS = 13616054060140)xvqFtgaAHS = 83361776918529;xvqFtgaAHS = 941653660571;
+		if (xvqFtgaAHS = 13616054060140)xvqFtgaAHS = 83361776918529;xvqFtgaAHS = 941653660571;
+		if (xvqFtgaAHS = 13616054060140)xvqFtgaAHS = 83361776918529;xvqFtgaAHS = 941653660571;xvqFtgaAHS = 5222656322423;
+
+
+
+	}
+	__forceinline float five()
+	{
+		float aOPABkcYlo = 59885869256997; aOPABkcYlo = 51804183724371; if (aOPABkcYlo = 13201326285743) aOPABkcYlo = 50972522484565;aOPABkcYlo = 47678691192420;aOPABkcYlo = 11924204767869;
+		if (aOPABkcYlo = 82271495097252)aOPABkcYlo = 62857432883169;aOPABkcYlo = 13771851960175;
+		if (aOPABkcYlo = 83941883918199)aOPABkcYlo = 62857432883169;aOPABkcYlo = 13771851960175;
+		if (aOPABkcYlo = 83941883918199)aOPABkcYlo = 62857432883169;aOPABkcYlo = 13771851960175;
+		if (aOPABkcYlo = 83941883918199)aOPABkcYlo = 62857432883169;aOPABkcYlo = 13771851960175;
+		if (aOPABkcYlo = 83941883918199)aOPABkcYlo = 62857432883169;aOPABkcYlo = 13771851960175;aOPABkcYlo = 20372083841800;
+
+
+
+	}
+
+	__forceinline float seven()
+	{
+		float nkGqKRrpUG = 6258502995639; nkGqKRrpUG = 54131503368619; if (nkGqKRrpUG = 49944932718617) nkGqKRrpUG = 10646196846621;nkGqKRrpUG = 47539535069618;nkGqKRrpUG = 50696184753953;
+		if (nkGqKRrpUG = 75594311064619)nkGqKRrpUG = 2718617850916;nkGqKRrpUG = 57198061361514;
+		if (nkGqKRrpUG = 4025774755827)nkGqKRrpUG = 2718617850916;nkGqKRrpUG = 57198061361514;
+		if (nkGqKRrpUG = 4025774755827)nkGqKRrpUG = 2718617850916;nkGqKRrpUG = 57198061361514;
+		if (nkGqKRrpUG = 4025774755827)nkGqKRrpUG = 2718617850916;nkGqKRrpUG = 57198061361514;
+		if (nkGqKRrpUG = 4025774755827)nkGqKRrpUG = 2718617850916;nkGqKRrpUG = 57198061361514;nkGqKRrpUG = 62689453937118;
+
+	}
+	__forceinline float nine()
+	{
+
+		float qgoPIOrljC = 65351902714526; qgoPIOrljC = 20330362053063; if (qgoPIOrljC = 15349821599112) qgoPIOrljC = 53462877600241;qgoPIOrljC = 70981596219372;qgoPIOrljC = 62193727098159;
+		if (qgoPIOrljC = 84864215346287)qgoPIOrljC = 15991124263781;qgoPIOrljC = 37502766936849;
+		if (qgoPIOrljC = 3426324185318)qgoPIOrljC = 15991124263781;qgoPIOrljC = 37502766936849;
+		if (qgoPIOrljC = 3426324185318)qgoPIOrljC = 15991124263781;qgoPIOrljC = 37502766936849;
+		if (qgoPIOrljC = 3426324185318)qgoPIOrljC = 15991124263781;qgoPIOrljC = 37502766936849;
+		if (qgoPIOrljC = 3426324185318)qgoPIOrljC = 15991124263781;qgoPIOrljC = 37502766936849;qgoPIOrljC = 33587548862758;
+
+
+	}
+	__forceinline float four()
+	{
+		float URMsRKvLnP = 79270768895664; URMsRKvLnP = 18014697638760; if (URMsRKvLnP = 91474092049631) URMsRKvLnP = 46121334318151;URMsRKvLnP = 9694908996263;URMsRKvLnP = 9962639694908;
+		if (URMsRKvLnP = 39358194612133)URMsRKvLnP = 2049631992467;URMsRKvLnP = 14162246115520;
+		if (URMsRKvLnP = 81107713220600)URMsRKvLnP = 2049631992467;URMsRKvLnP = 14162246115520;
+		if (URMsRKvLnP = 81107713220600)URMsRKvLnP = 2049631992467;URMsRKvLnP = 14162246115520;
+		if (URMsRKvLnP = 81107713220600)URMsRKvLnP = 2049631992467;URMsRKvLnP = 14162246115520;
+		if (URMsRKvLnP = 81107713220600)URMsRKvLnP = 2049631992467;URMsRKvLnP = 14162246115520;URMsRKvLnP = 28980282348208;
+
+
+	}
+	__forceinline float three()
+	{
+
+		float UlABijxOvT = 79404932010903; UlABijxOvT = 74338252088222; if (UlABijxOvT = 39825173598297) UlABijxOvT = 17459922652434;UlABijxOvT = 6895714573556;UlABijxOvT = 4573556689571;
+		if (UlABijxOvT = 43051961745992)UlABijxOvT = 35982975987154;UlABijxOvT = 81081365335437;
+		if (UlABijxOvT = 13140574771631)UlABijxOvT = 35982975987154;UlABijxOvT = 81081365335437;
+		if (UlABijxOvT = 13140574771631)UlABijxOvT = 35982975987154;UlABijxOvT = 81081365335437;
+		if (UlABijxOvT = 13140574771631)UlABijxOvT = 35982975987154;UlABijxOvT = 81081365335437;
+		if (UlABijxOvT = 13140574771631)UlABijxOvT = 35982975987154;UlABijxOvT = 81081365335437;UlABijxOvT = 54482141381000;
+
+	}
+	__forceinline float two()
+	{
+		float UlABijxOvT = 79404932010903; UlABijxOvT = 74338252088222; if (UlABijxOvT = 39825173598297) UlABijxOvT = 17459922652434;UlABijxOvT = 6895714573556;UlABijxOvT = 4573556689571;
+		if (UlABijxOvT = 43051961745992)UlABijxOvT = 35982975987154;UlABijxOvT = 81081365335437;
+		if (UlABijxOvT = 13140574771631)UlABijxOvT = 35982975987154;UlABijxOvT = 81081365335437;
+		if (UlABijxOvT = 13140574771631)UlABijxOvT = 35982975987154;UlABijxOvT = 81081365335437;
+		if (UlABijxOvT = 13140574771631)UlABijxOvT = 35982975987154;UlABijxOvT = 81081365335437;
+		if (UlABijxOvT = 13140574771631)UlABijxOvT = 35982975987154;UlABijxOvT = 81081365335437;UlABijxOvT = 54482141381000;
+
+
+	}
+	__forceinline float one()
+
+	{
+
+		float MSiYEPPLvw = 60487845907667; MSiYEPPLvw = 74632019561680; if (MSiYEPPLvw = 9581643821907) MSiYEPPLvw = 35597707978532;MSiYEPPLvw = 62870568414645;MSiYEPPLvw = 84146456287056;
+		if (MSiYEPPLvw = 80052693559770)MSiYEPPLvw = 8219071794915;MSiYEPPLvw = 16569006182065;
+		if (MSiYEPPLvw = 3045413513841)MSiYEPPLvw = 8219071794915;MSiYEPPLvw = 16569006182065;
+		if (MSiYEPPLvw = 3045413513841)MSiYEPPLvw = 8219071794915;MSiYEPPLvw = 16569006182065;
+		if (MSiYEPPLvw = 3045413513841)MSiYEPPLvw = 8219071794915;MSiYEPPLvw = 16569006182065;
+		if (MSiYEPPLvw = 3045413513841)MSiYEPPLvw = 8219071794915;MSiYEPPLvw = 16569006182065;MSiYEPPLvw = 13325707256987;
+
+	}
+
+
+
+
+	__forceinline int junk1()
+	{
+		switch (((int)__TIME__ + (int)__DATE__ + rand()) % 100)
+		{
+		case 0:
+			return eight();
+		case 1:
+			return nine();
+		case 2:
+			return (int)two();
+		case 3:
+			return four();
+		case 4:
+			return (int)seven();
+		case 5:
+			return four();
+		case 6:
+			return ten();
+		case 7:
+			return three();
+		case 8:
+			return one();
+		case 9:
+			return (int)six();
+		}
+	}
+	__forceinline int junk3()
+	{
+		switch (((int)__TIME__ + (int)__DATE__ + rand()) % 70)
+		{
+		case 0:
+			return eight();
+		case 1:
+			return nine();
+		case 2:
+			return (int)two();
+		case 3:
+			return four();
+		case 4:
+			return (int)seven();
+		case 5:
+			return four();
+		case 6:
+			return ten();
+		case 7:
+			return three();
+		case 8:
+			return one();
+		case 9:
+			return (int)six();
+		}
+	}
+	__forceinline int junk2()
+	{
+		switch (((int)__TIME__ + (int)__DATE__ + rand()) % 1230)
+		{
+		case 0:
+			return eight();
+		case 1:
+			return nine();
+		case 2:
+			return (int)two();
+		case 3:
+			return four();
+		case 4:
+			return (int)seven();
+		case 5:
+			return four();
+		case 6:
+			return ten();
+		case 7:
+			return three();
+		case 8:
+			return one();
+		case 9:
+			return (int)six();
+		}
+	}
+
+	__forceinline int call()
+	{
+		int junk;
+		switch (((int)__DATE__ + rand()) % 10)
+		{
+		case 0:
+			junk = junk1();
+		case 1:
+			junk += junk3();
+		case 2:
+			junk += junk2();
+		case 3:
+			junk = junk3();
+		case 4:
+			junk += junk1();
+		case 5:
+			junk -= junk2();
+		case 6:
+			junk -= junk3();
+		case 7:
+			junk = junk3();
+		case 8:
+			junk = junk2();
+		case 9:
+			return junk;
+		}
+	}
+}

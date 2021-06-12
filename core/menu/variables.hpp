@@ -65,8 +65,7 @@ namespace variables {
 	inline bool name_esp = false;
 	inline bool hp_esp = false;
 	inline bool weapon_esp = false;	
-	inline bool antiaim1 = false;
-
+	
 	inline bool thirdperson = false;
 	inline int thirdperson_key = -1;
 

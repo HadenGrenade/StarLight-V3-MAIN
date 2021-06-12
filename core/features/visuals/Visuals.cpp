@@ -91,7 +91,7 @@ void visuals::draw_gun(player_t* entity, box bbox)
 
 	render::text(bbox.x + (bbox.w / 2), (bbox.y + 5) + (bbox.h), render::fonts::esp_font, weapon, true, color(255, 255, 255, 255));
 }
-
+ 
 void visuals::draw_ammo(player_t* entity, box bbox)
 {
 	if (!(variables::ammo_esp)) return;

@@ -1,7 +1,5 @@
-[![Contributors](https://img.shields.io/github/contributors/Cr7mbl3/xesa.svg?style=for-the-badge)](https://github.com/Cr7mbl3/xesa/graphs/contributors)
-[![Forks](https://img.shields.io/github/forks/Cr7mbl3/xesa.svg?style=for-the-badge)](https://github.com/Cr7mbl3/xesa/network/members)
-[![Stargazers](https://img.shields.io/github/stars/Cr7mbl3/xesa.svg?style=for-the-badge)](https://github.com/Cr7mbl3/xesa/stargazers)
-[![Issues](https://img.shields.io/github/issues/Cr7mbl3/xesa.svg?style=for-the-badge)](https://github.com/Cr7mbl3/xesa/issues)
+[![Forks](https://img.shields.io/github/forks/Cr7mbl3/xesa.svg?style=for-the-badge)](https://github.com/thesexybeast23/StarLight-V3-MAIN/network/members)
+[![Issues](https://img.shields.io/github/issues/Cr7mbl3/xesa.svg?style=for-the-badge)](https://github.com/thesexybeast23/StarLight-V3-MAIN/issues)
 
 # Starlight
 Starlight is an internal mod for [Counter Strike: Global Offensive](https://blog.counter-strike.net/)

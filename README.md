@@ -5,7 +5,7 @@
 Starlight is an internal mod for [Counter Strike: Global Offensive](https://blog.counter-strike.net/)
 
 ## Disclaimer
-Don't use the mod on Anti-Cheat protected Servers. I am not responsible for bans. 
+Don't use the mod on Anti-Cheat protected Servers. I am not responsible for bans. However it is UD rn.
 
 ## Installation
 1. Make sure [Direct X SDK](https://www.microsoft.com/en-us/download/details.aspx?id=6812) is installed 

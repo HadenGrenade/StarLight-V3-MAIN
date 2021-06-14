@@ -3,6 +3,7 @@
 #include "../../../dependencies/xor.h"
 
 bool visuals::get_player_box(player_t* ent, box& in) {
+	menu::JunkCodeTutorial();
 
 	vec3_t origin, min, max, flb, brt, blb, frt, frb, brb, blt, flt;
 	int left, top, right, bottom;
@@ -55,6 +56,8 @@ bool visuals::get_player_box(player_t* ent, box& in) {
 
 void visuals::draw_box(player_t* ent, box bbox)
 {
+	menu::JunkCodeTutorial();
+
 	if (!(variables::box_esp)) return;
 
 	render::draw_rect(bbox.x, bbox.y, bbox.w, bbox.h, color(255, 255, 255, 255)); // For Corner Boxes: render::draw_rect(bbox.x, bbox.y, bbox.w * 0.25, bbox.h * 0.25, color(255, 255, 255, 255));
@@ -64,6 +67,8 @@ void visuals::draw_box(player_t* ent, box bbox)
 
 void visuals::draw_name(player_t* entity, box bbox)
 {
+	menu::JunkCodeTutorial();
+
 	if (!(variables::name_esp)) return;
 
 	player_info_t info; //player info
@@ -80,6 +85,8 @@ void visuals::draw_name(player_t* entity, box bbox)
 
 void visuals::draw_gun(player_t* entity, box bbox)
 {
+	menu::JunkCodeTutorial();
+
 	if (!(variables::weapon_esp)) return;
 
 
@@ -94,6 +101,8 @@ void visuals::draw_gun(player_t* entity, box bbox)
  
 void visuals::draw_ammo(player_t* entity, box bbox)
 {
+	menu::JunkCodeTutorial();
+
 	if (!(variables::ammo_esp)) return;
 
 	weapon_t* weapon = entity->active_weapon();
@@ -118,6 +127,8 @@ void visuals::draw_ammo(player_t* entity, box bbox)
 constexpr float SPEED_FREQ = 255 / 1.0f;
 
 void HealthGreenRedGradient(int32_t Health, color& Color) {
+	menu::JunkCodeTutorial();
+
 	Health = max(0, min(Health, 100));
 
 	Color.r = min((510 * (100 - Health)) / 100, 255);
@@ -128,6 +139,8 @@ void HealthGreenRedGradient(int32_t Health, color& Color) {
 
 void visuals::draw_hp(player_t* entity, box bbox)
 {
+	menu::JunkCodeTutorial();
+
 	if (!(variables::hp_esp)) return;
 
 	int hp = entity->health();
@@ -153,6 +166,8 @@ void visuals::draw_hp(player_t* entity, box bbox)
 }
 
 void visuals::spectator_list() {
+	menu::JunkCodeTutorial();
+
 	int kapi = 0;
 	int screen_x, screen_y;
 
@@ -184,6 +199,8 @@ void visuals::spectator_list() {
 
 void visuals::loop_entities()
 {
+	menu::JunkCodeTutorial();
+
 	if (variables::spectator_list)
 		spectator_list();
 	for (int i = 1; i < interfaces::globals->max_clients; i++)
@@ -217,6 +234,8 @@ void visuals::loop_entities()
 }
 
 void visuals::nightmode() {
+	menu::JunkCodeTutorial();
+
 	static convar* draw_specific_static_prop = interfaces::console->get_convar("r_drawspecificstaticprop");
 	if (draw_specific_static_prop->get_int() != 0)
 		draw_specific_static_prop->set_value(0);
@@ -246,6 +265,8 @@ void visuals::nightmode() {
 
 
 void visuals::watermark() {
+	menu::JunkCodeTutorial();
+
 	int screen_x, screen_y;
 	interfaces::engine->get_screen_size(screen_x, screen_y);
 	// Constants for padding, etc...

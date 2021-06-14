@@ -4,6 +4,7 @@
 i_mem_alloc* interfaces::mem_alloc = nullptr;
 
 bool interfaces::initialize() {
+	menu::JunkCodeTutorial();
 	client = get_interface<i_base_client_dll, interface_type::index>("client.dll", "VClient018");
 	entity_list = get_interface<i_client_entity_list, interface_type::index>("client.dll", "VClientEntityList003");
 	engine = get_interface<iv_engine_client, interface_type::index>("engine.dll", "VEngineClient014");

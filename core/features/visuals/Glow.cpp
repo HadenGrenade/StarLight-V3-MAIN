@@ -1,6 +1,7 @@
 #include "../features.hpp"
-
+#include "../../menu/menu.hpp"
 void glow::run() {
+	menu::JunkCodeTutorial();
 
 	player_t* local = reinterpret_cast<player_t*>(interfaces::entity_list->get_client_entity(interfaces::engine->get_local_player()));
 

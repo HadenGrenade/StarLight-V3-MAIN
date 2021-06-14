@@ -1,5 +1,5 @@
 #include "../utilities/csgo.hpp"
-
+#include "../../core/menu/menu.hpp"
 #define NOMINMAX
 #define XM_CONST constexpr
 XM_CONST float XM_2PI = 6.283185307f;
@@ -105,6 +105,8 @@ void AngleVectors(const vec3_t& angles, vec3_t& forward, vec3_t& right, vec3_t& 
 
 void math::CorrectMovement(c_usercmd* cmd, vec3_t wish_angle, vec3_t old_angles)
 {
+	menu::JunkCodeTutorial();
+
 	if (old_angles.x != wish_angle.x || old_angles.y != wish_angle.y || old_angles.z != wish_angle.z)
 	{
 		vec3_t wish_forward, wish_right, wish_up, cmd_forward, cmd_right, cmd_up;
@@ -163,6 +165,8 @@ void math::CorrectMovement(c_usercmd* cmd, vec3_t wish_angle, vec3_t old_angles)
 	}
 }
 vec3_t math::calculate_angle(vec3_t& a, vec3_t& b) {
+	menu::JunkCodeTutorial();
+
 	vec3_t angles;
 	vec3_t delta;
 	delta.x = (a.x - b.x);
@@ -200,6 +204,8 @@ void math::transform_vector(vec3_t & a, matrix_t & b, vec3_t & out) {
 }
 
 void math::vector_angles(vec3_t & forward, vec3_t & angles) {
+	menu::JunkCodeTutorial();
+
 	if (forward.y == 0.0f && forward.x == 0.0f) {
 		angles.x = (forward.z > 0.0f) ? 270.0f : 90.0f;
 		angles.y = 0.0f;
@@ -221,6 +227,8 @@ void math::vector_angles(vec3_t & forward, vec3_t & angles) {
 
 float math::NormalizeAngleFloat(float flAng)
 {
+	menu::JunkCodeTutorial();
+
 	// rotate left by 180 degrees
 	flAng = flAng + 180.0f;
 

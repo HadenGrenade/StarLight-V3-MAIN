@@ -1,5 +1,5 @@
 #include "../features.hpp"
-
+#include "../../menu/menu.hpp"
 void chams::init() {
 	std::ofstream("csgo/materials/glowOverlay.vmt") << R"#("VertexLitGeneric" {
  
@@ -104,6 +104,7 @@ void modulate_shit_alpha(i_material* mat, float alpha) {
 		(*(void(__thiscall**)(int, float))(*(DWORD*)p_var + 44))((uintptr_t)p_var, alpha);
 }
 void chams::run(hooks::draw_model_execute::fn ofunc, i_mat_render_context* ctx, const draw_model_state_t& state, const model_render_info_t& info, matrix_t* matrix) {
+	menu::JunkCodeTutorial();
 
 	static i_material* mat_textured = interfaces::material_system->find_material("matReg", nullptr);
 	static i_material* mat_xqz = interfaces::material_system->find_material("matXQZ", nullptr);

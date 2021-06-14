@@ -104,7 +104,7 @@ float clip(float n, float lower, float upper)
 // ========================================================================
 void zgui::checkbox(const char *id, bool &value) {
 
-    color box = { 231, 177, 238, 255 };
+    color box = { 50, 50, 136, 255 };
 
     std::vector<std::string> id_split = utils::hash::split_str(id, '#');
 
@@ -840,8 +840,8 @@ bool zgui::begin_window(std::string_view title, const vec2 default_size, const u
 
     if (const int prev_alpha = window_ctx.alpha; !(flags & zgui_window_flags_no_ontoggle_animation)) {
         // const int fade_factor = static_cast<int>(1.0f / .5 * functions.get_curtime() * 255); // const int fade_factor = static_cast<int>(1.0f / 0.15f * functions.get_frametime() * 255);
-        const int fade_factor = static_cast<int>(1.0f / .5f * (1.0f / 60.0f) * 255.f);
-        window_ctx.alpha = std::clamp(window_ctx.alpha + (window_ctx.opened ? fade_factor : -fade_factor), 0, 255);
+        //const int fade_factor = static_cast<int>(1.0f / .5f * (1.0f / 60.0f) * 255.f);
+     //   window_ctx.alpha = std::clamp(window_ctx.alpha + (window_ctx.opened ? fade_factor : -fade_factor), 0, 255);
 
         if (window_ctx.alpha != prev_alpha) {
             global_colors.window_border_fill.a = window_ctx.alpha;
@@ -880,9 +880,9 @@ bool zgui::begin_window(std::string_view title, const vec2 default_size, const u
         if (window_ctx.size.x < 1 && window_ctx.size.y < 1)
             window_ctx.size = default_size;
 
-        functions.draw_filled_rect(window_ctx.position.x, window_ctx.position.y, window_ctx.size.x, window_ctx.size.y, global_colors.window_border_color);
-        functions.draw_filled_rect(window_ctx.position.x + 1, window_ctx.position.y + 1, window_ctx.size.x - 2, window_ctx.size.y - 2, global_colors.window_border_fill);
-        functions.draw_filled_rect(window_ctx.position.x + 5, window_ctx.position.y + 12, window_ctx.size.x - 10, window_ctx.size.y - 17, global_colors.window_border_color);
+     //   functions.draw_filled_rect(window_ctx.position.x, window_ctx.position.y, window_ctx.size.x, window_ctx.size.y, global_colors.window_border_color);
+      //  functions.draw_filled_rect(window_ctx.position.x + 1, window_ctx.position.y + 1, window_ctx.size.x - 2, window_ctx.size.y - 2, global_colors.window_border_fill);
+     //   functions.draw_filled_rect(window_ctx.position.x + 5, window_ctx.position.y + 12, window_ctx.size.x - 10, window_ctx.size.y - 17, global_colors.window_border_color);
         functions.draw_filled_rect(window_ctx.position.x + 6, window_ctx.position.y + 13, window_ctx.size.x - 12, window_ctx.size.y - 19, global_colors.window_background);
 
 
@@ -900,7 +900,7 @@ void zgui::end_window() {
     for (int i = window_ctx.render.size() - 1; i >= 0; i--) {
         switch (window_ctx.render[i].render_type) {
             case zgui_render_type::zgui_line:
-                functions.draw_line(window_ctx.render[i].draw_position.x, window_ctx.render[i].draw_position.y, window_ctx.render[i].size.x, window_ctx.render[i].size.y, window_ctx.render[i].color);
+               functions.draw_line(window_ctx.render[i].draw_position.x, window_ctx.render[i].draw_position.y, window_ctx.render[i].size.x, window_ctx.render[i].size.y, window_ctx.render[i].color);
                 break;
             case zgui_render_type::zgui_rect:
                 functions.draw_rect(window_ctx.render[i].draw_position.x, window_ctx.render[i].draw_position.y, window_ctx.render[i].size.x, window_ctx.render[i].size.y, window_ctx.render[i].color);

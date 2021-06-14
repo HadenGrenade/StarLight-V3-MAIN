@@ -38,7 +38,7 @@ namespace variables {
 	inline float aim_fov = 0;
 	inline float smooth = 0;
 	inline bool mode1 = 0;
-
+	inline bool chicken_aimbot = 0;
 	inline float aim_fov_rifle = 0;
 	inline float smooth_rifle = 0;
 
@@ -89,18 +89,18 @@ namespace variables {
 	inline bool watermark = false;
 	inline bool spectator_list = false;
 	inline bool resolver = false;
+	inline bool duck = false;
+	inline float Chams_Color[3] = { 0.0f, 0.f, 0.0f };
+	inline float Chams_Color_Z[3] = { 0.f, 0.0f, 0.f };
+	inline float Chams_Color_BT[3] = { 0.f, 0.0f, 0.f };
+	inline float Chams_Color_G[3] = { 0.f, 0.0f, 0.0f };
+	inline float Chams_Color_G_Arm[3] = { 0.f, 0.f, 0.0f };
+	inline float Chams_Color_Arm[3] = { 0.f, 0.f, 0.f };
+	inline float Chams_Color_Desync[3] = { 0.0f, 0.0f, 0.f };
+	inline float Glow_Color[3] = { 0.0f, 0.0f, 0.f };
+	inline float Watermark_Color[3] = { 0.0f, 0.0f, 0.0f };
 
-	inline float Chams_Color[3] = { 0.6f, 1.f, 0.13f };
-	inline float Chams_Color_Z[3] = { 0.f, 0.6f, 1.f };
-	inline float Chams_Color_BT[3] = { 0.f, 0.2f, 1.f };
-	inline float Chams_Color_G[3] = { 1.f, 0.5f, 0.6f };
-	inline float Chams_Color_G_Arm[3] = { 1.f, 1.f, 0.6f };
-	inline float Chams_Color_Arm[3] = { 1.f, 1.f, 1.f };
-	inline float Chams_Color_Desync[3] = { 0.5f, 0.1f, 1.f };
-	inline float Glow_Color[3] = { 0.5f, 0.1f, 1.f };
-	inline float Watermark_Color[3] = { 0.35f, 0.47f, 0.94f };
-
-	inline float Glow_A = 100.f;
+	inline float Glow_A = 10.f;
 
 	inline bool skinchanger;
 	inline int knife_model = 0;
@@ -150,9 +150,14 @@ namespace variables {
 	inline int specialist_skin = 0;
 	inline int sport_skin = 0;
 
+	// to lazy to move up
+	inline bool aimbot_chicken = 0;
+	inline bool draw_chicken = 0;
+	inline bool wasd = 0;
+
 	namespace menu {
 		inline bool opened = false;
-		inline int x = 210, y = 210;
-		inline int w = 400, h = 450; // 400, 300
+		inline int x = 190, y = 250;
+		inline int w = 400, h = 300; // 400, 300
 	}
 }

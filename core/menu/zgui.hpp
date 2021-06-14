@@ -257,18 +257,18 @@ namespace zgui {
         
         // Color definition. Can be changed at any time just simply by editing this struct.
         static struct {
-            color window_border_fill{ 16, 16, 16, 255 };
-            color window_border_color{ 231, 177, 238, 255 }; // 231, 177, 238, 255
-            color window_background{ 20, 20, 20, 255 };
+            color window_border_fill{ 5, 5, 255, 255 };
+            color window_border_color{ 5, 5, 255, 255 }; // 231, 177, 238, 255
+            color window_background{ 20, 20, 75, 255 };
 
-            color color_text{ 203, 203, 203, 255 };
-            color color_text_dimmer{ 99, 110, 114, 255 };
+            color color_text{ 255, 255, 255, 255 };
+            color color_text_dimmer{ 99, 110, 135, 255 };
 
             color control_outline{ 4, 4, 4, 255 };
-            color control_active_or_clicked{ 231, 177, 238, 255 }; // 231, 177, 238, 255
-            color control_idle{ 28, 28, 28, 255 };
+            color control_active_or_clicked{ 35, 35, 155, 255 }; // 231, 177, 238, 255
+            color control_idle{ 35, 35, 35, 255 };
 
-            color color_groupbox_bg{ 24, 24, 24, 255 };
+            color color_groupbox_bg{ 35, 35, 75, 255 };
             color color_groupbox_outline{ 4, 4, 4, 255 };
         } global_colors;
 

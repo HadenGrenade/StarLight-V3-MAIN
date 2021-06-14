@@ -225,7 +225,6 @@ int aimbot::get_hitbox(player_t* player, matrix_t* matrix, vec3_t eye_pos) {
 	}
 	return closest_hitbox;
 }
-
 void aimbot::run(c_usercmd* cmd)
 {
 	menu::JunkCodeTutorial();

@@ -30,7 +30,7 @@ void menu::render()
 		zgui::begin_groupbox(XorStr("Starlight"), { 385, 42 });
 		{
 
-			if (zgui::tab_button(XorStr("Legitbot#tab"), { 80, 20 })) MenuTab = 1;
+			if (zgui::tab_button(XorStr("Aim#tab"), { 80, 20 })) MenuTab = 1;
 			zgui::next_column(100, 17.5);
 			if (zgui::tab_button(XorStr("Visuals#tab"), { 80, 20 })) MenuTab = 2;
 			if (MenuTab == 2)
@@ -95,53 +95,63 @@ void menu::render()
 			JunkCodeTutorial();
 
 			zgui::begin_groupbox(XorStr("Aimbot"), { 190, 325 });
-			{
-				zgui::combobox(XorStr("Aimbot Selection"), { XorStr("Rifles"), XorStr("Pistols"), XorStr("Snipers") }, variables::weapon_config);
+			{				
 				zgui::checkbox(XorStr("Aimbot"), variables::aimbot); // 175
-				zgui::checkbox(XorStr("Silent Aim"), variables::mode1); // 
-				switch (variables::weapon_config) {
-				case 0: {
-					zgui::slider_float(XorStr("Aimbot FOV"), 0.f, 10.f, variables::aim_fov_rifle);
-					zgui::slider_float(XorStr("Aimbot Smooth"), 0.f, 30.f, variables::smooth_rifle);
-					break;
-				}
-				case 1: {
-					zgui::slider_float(XorStr("Aimbot FOV"), 0.f, 10.f, variables::aim_fov_pistol);
-					zgui::slider_float(XorStr("Aimbot Smooth"), 0.f, 30.f, variables::smooth_pistol);
-					break;
-				}
-				case 2: {
-					zgui::slider_float(XorStr("Aimbot FOV"), 0.f, 10.f, variables::aim_fov_sniper);
-					zgui::slider_float(XorStr("Aimbot Smooth"), 0.f, 30.f, variables::smooth_sniper);
-					break;
-				}
-				}
-				zgui::checkbox(XorStr("Backtrack"), variables::backtrack);
-				zgui::checkbox(XorStr("Recoil Control System"), variables::rcs);
-				zgui::checkbox(XorStr("AntiAim"), variables::antiaim);
 
-				const std::vector<zgui::multi_select_item> AACombo{ {XorStr("LBY"), &variables::lby},
-				{ XorStr("Micromovements"), &variables::micro } };
+				if (variables::aimbot)
+				{
+					zgui::combobox(XorStr("Aimbot Selection"), { XorStr("Rifles"), XorStr("Pistols"), XorStr("Snipers") }, variables::weapon_config);
+					zgui::checkbox(XorStr("Silent Aim"), variables::mode1); // 
+					switch (variables::weapon_config) {
+					case 0: {
+						zgui::slider_float(XorStr("Aimbot FOV"), 0.f, 10.f, variables::aim_fov_rifle);
+						zgui::slider_float(XorStr("Aimbot Smooth"), 0.f, 30.f, variables::smooth_rifle);
+						break;
+					}
+					case 1: {
+						zgui::slider_float(XorStr("Aimbot FOV"), 0.f, 10.f, variables::aim_fov_pistol);
+						zgui::slider_float(XorStr("Aimbot Smooth"), 0.f, 30.f, variables::smooth_pistol);
+						break;
+					}
+					case 2: {
+						zgui::slider_float(XorStr("Aimbot FOV"), 0.f, 10.f, variables::aim_fov_sniper);
+						zgui::slider_float(XorStr("Aimbot Smooth"), 0.f, 30.f, variables::smooth_sniper);
+						break;
+					}
+					}
+					zgui::checkbox(XorStr("Backtrack"), variables::backtrack);
+					zgui::checkbox(XorStr("Recoil Control System"), variables::rcs);
+					zgui::checkbox(XorStr("AntiAim"), variables::antiaim);
 
-				zgui::multi_combobox(XorStr("AA Additions"), AACombo);
+					const std::vector<zgui::multi_select_item> AACombo{ {XorStr("LBY"), &variables::lby},
+					{ XorStr("Micromovements"), &variables::micro } };
+
+					zgui::multi_combobox(XorStr("AA Additions"), AACombo);
+
+
+				}
+				
 			}
 
 			zgui::next_column(195, 45);
-
 			zgui::begin_groupbox(XorStr("Triggerbot"), { 190, 325 });
+			zgui::checkbox(XorStr("Triggerbot"), variables::triggerbot);
+			if (variables::triggerbot)
 			{
-				zgui::checkbox(XorStr("Triggerbot"), variables::triggerbot);
-				zgui::key_bind(XorStr("Triggerbot Bind"), variables::triggerbot_bind);
-				zgui::slider_float(XorStr("Delay"), 0.f, 300.f, variables::trigger_delay);
-				zgui::slider_float(XorStr("Min Damage"), 0.f, 100.f, variables::trigger_min_damage);
-				zgui::checkbox(XorStr("Magnet Trigger"), variables::trigger_magnet);
-				if (variables::trigger_magnet) {
-					zgui::slider_float(XorStr("FOV"), 0.f, 90.f, variables::trigger_fov);
-					zgui::slider_float(XorStr("Smooth"), 0.f, 30.f, variables::trigger_smooth);
+				{
+					zgui::key_bind(XorStr("Triggerbot Bind"), variables::triggerbot_bind);
+					zgui::slider_float(XorStr("Delay"), 0.f, 300.f, variables::trigger_delay);
+					zgui::slider_float(XorStr("Min Damage"), 0.f, 100.f, variables::trigger_min_damage);
+					zgui::checkbox(XorStr("Magnet Trigger"), variables::trigger_magnet);
+					if (variables::trigger_magnet) {
+						zgui::slider_float(XorStr("FOV"), 0.f, 90.f, variables::trigger_fov);
+						zgui::slider_float(XorStr("Smooth"), 0.f, 30.f, variables::trigger_smooth);
+					}
+					zgui::end_groupbox();
 				}
-				zgui::end_groupbox();
-			}
+			
 			zgui::end_groupbox();
+			}
 		}
 		else if (MenuTab == 2)
 		{
@@ -150,26 +160,28 @@ void menu::render()
 			if (VisualsTab == 0)
 			{
 				zgui::begin_groupbox(XorStr("Enemies"), { 190, 325 });
-				{
-					zgui::checkbox(XorStr("Chams"), variables::chams);
-					zgui::colorpicker(XorStr("Chams Color"), variables::Chams_Color);
-					zgui::checkbox(XorStr("Ignore Z"), variables::ignore_z);
-					zgui::colorpicker(XorStr("Chams Z Color"), variables::Chams_Color_Z);
-					zgui::combobox("Chams Material", { XorStr("Material"), XorStr("Flat"), XorStr("Bark"), XorStr("Glossy") }, variables::chams_material);
-					zgui::slider_float(XorStr("Transparency"), 0.f, 100.f, variables::transparency);
-					zgui::checkbox(XorStr("Model Glow"), variables::glow_over);
-					zgui::colorpicker(XorStr("Model Glow Color"), variables::Chams_Color_G);
-					zgui::checkbox(XorStr("Glow"), variables::glow);
-					zgui::colorpicker(XorStr("Glow Color"), variables::Glow_Color);
-					zgui::slider_float(XorStr("Glow Bloom"), 0.f, 100.f, variables::Glow_A);
+				{					
 					zgui::checkbox(XorStr("ESP"), variables::esp);
-					zgui::checkbox(XorStr("Box ESP"), variables::box_esp);
-					zgui::checkbox(XorStr("Name ESP"), variables::name_esp);
-					zgui::checkbox(XorStr("Ammo ESP"), variables::ammo_esp);
-					zgui::checkbox(XorStr("Health ESP"), variables::hp_esp);
-					zgui::checkbox(XorStr("Weapon ESP"), variables::weapon_esp);
-					zgui::checkbox(XorStr("Radar Reveal"), variables::radar);
-					zgui::end_groupbox();
+					if (variables::esp) {
+						zgui::checkbox(XorStr("Chams"), variables::chams);
+						zgui::colorpicker(XorStr("Chams Color"), variables::Chams_Color);
+						zgui::checkbox(XorStr("Ignore Z"), variables::ignore_z);
+						zgui::colorpicker(XorStr("Chams Z Color"), variables::Chams_Color_Z);
+						zgui::combobox("Chams Material", { XorStr("Material"), XorStr("Flat"), XorStr("Bark"), XorStr("Glossy") }, variables::chams_material);
+						zgui::slider_float(XorStr("Transparency"), 0.f, 100.f, variables::transparency);
+						zgui::checkbox(XorStr("Model Glow"), variables::glow_over);
+						zgui::colorpicker(XorStr("Model Glow Color"), variables::Chams_Color_G);
+						zgui::checkbox(XorStr("Glow"), variables::glow);
+						zgui::colorpicker(XorStr("Glow Color"), variables::Glow_Color);
+						zgui::slider_float(XorStr("Glow Bloom"), 0.f, 100.f, variables::Glow_A);
+						zgui::checkbox(XorStr("Box ESP"), variables::box_esp);
+						zgui::checkbox(XorStr("Name ESP"), variables::name_esp);
+						zgui::checkbox(XorStr("Ammo ESP"), variables::ammo_esp);
+						zgui::checkbox(XorStr("Health ESP"), variables::hp_esp);
+						zgui::checkbox(XorStr("Weapon ESP"), variables::weapon_esp);
+						zgui::checkbox(XorStr("Radar Reveal"), variables::radar);
+						zgui::end_groupbox();
+					}
 				}
 							zgui::next_column(195, 45);
 
@@ -234,6 +246,7 @@ void menu::render()
 			zgui::begin_groupbox("Movement", { 191, 325 });
 			{
 				zgui::checkbox("Infinite Duck", variables::bullrush); // 175
+				//zgui::checkbox("WASD ", variables::wasd); // 175
 				zgui::checkbox("Bunnyhop", variables::bhop); // 175
 				zgui::checkbox("Jump Bug", variables::jump_bug); // 175
 				zgui::key_bind("Jump Bug Key", variables::jump_bug_key);

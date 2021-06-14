@@ -3,8 +3,9 @@
 /* 
 *   Github: @amizu03
 *   Discord: ses#1997
+*   Site: Sesame.one
 *   
-*   -- PLEASE DO NOT REMOVE --
+*   -- PLEASE DO NOT REMOVE --      // I wouldn't do that to you ses (:
 */
 
 /* NOTE: SORRY FOR THE C-STYLE CODE (FROM MY PROJECT) */

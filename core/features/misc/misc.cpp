@@ -244,7 +244,13 @@ void misc::visual::radar() {
 		}
 	}
 }
+void misc::duck() {
 
+	if (!variables::duck)
+		return;
+
+	
+}
 void misc::visual::noflash() {
 
 	player_t* local = reinterpret_cast<player_t*>(interfaces::entity_list->get_client_entity(interfaces::engine->get_local_player()));

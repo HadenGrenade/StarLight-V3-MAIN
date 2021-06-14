@@ -244,6 +244,7 @@ void visuals::nightmode() {
 	}
 }
 
+
 void visuals::watermark() {
 	int screen_x, screen_y;
 	interfaces::engine->get_screen_size(screen_x, screen_y);
@@ -284,4 +285,70 @@ void visuals::watermark() {
 	render::draw_rect(bg_pos.x, bg_pos.y, bg_size.x, bg_size.y, col_background); // Background
 	render::draw_rect(bg_pos.x, bg_pos.y, bg_size.x, 2, col_accent); // Accent line
 	render::text(text_pos.x, text_pos.y, render::fonts::watermark_font, text, false, col_text); // Text
+}
+void visuals::Draw1() {
+	// Doesn't work right now but will fix soon
+	if (variables::wasd)
+	{
+		render::draw_filled_rect(10, 300 + 300, 30, 35, color::red(220));
+		render::draw_filled_rect(10 + 32, 300 + 300, 30, 35, color::red(220));
+		render::draw_filled_rect(10 + 32 + 32, 300 + 300, 30, 35, color::red(220));
+		render::draw_filled_rect(10 + 32 + 32, 300 - 37 + 300, 30, 35, color::red(220));
+		render::draw_filled_rect(10 + 32, 300 - 37 + 300, 30, 35, color::red(220));
+		render::draw_filled_rect(10, 200 + 160 + 277, 95, 35, color::red(220));
+		render::draw_text_string(18, 305 + 300, render::fonts::esp_font, "A", false, color::white(220));
+		render::draw_text_string(17 + 35, 305 + 300, render::fonts::esp_font, "S", false, color::white(220));
+		render::draw_text_string(17 + 35 + 32, 305 + 300, render::fonts::esp_font, "D", false, color::white(220));
+		render::draw_text_string(17 + 35 + 32, 305 - 35 + 300, render::fonts::esp_font, "E", false, color::white(220));
+		render::draw_text_string(18 + 31, 305 - 35 + 300, render::fonts::esp_font, "W", false, color::white(220));
+		render::draw_text_string(30, 585 - 220 + 277, render::fonts::esp_font, "Space ", false, color::white(220));
+
+		for (int i = 0; i < 255; i++)
+			if (GetAsyncKeyState(i))
+				switch (i)
+				{
+				case 'A':
+
+					render::draw_filled_rect(10, 300 + 300, 30, 35, color::blue(220));
+					render::draw_text_string(17 + 35, 305 + 300, render::fonts::esp_font, "A", false, color::blue(220));
+
+					break;
+
+				case 'S':
+
+					render::draw_filled_rect(10 + 32, 300 + 300, 30, 35, color::blue(220));
+					render::draw_text_string(17 + 35, 305 + 300, render::fonts::esp_font, "S", false, color::blue(220));
+
+					break;
+
+				case 'D':
+
+					render::draw_filled_rect(10 + 32 + 32, 300 + 300, 30, 35, color::blue(220));
+					render::draw_text_string(17 + 35 + 32, 305 + 300, render::fonts::esp_font, "D", false, color::blue(220));
+
+					break;
+
+				case 'E':
+
+					render::draw_filled_rect(10 + 32 + 32, 300 - 37 + 300, 30, 35, color::blue(220));
+					render::draw_text_string(17 + 35 + 32, 305 - 35 + 300, render::fonts::esp_font, "E", false, color::blue(220));
+
+					break;
+
+				case 'W':
+
+					render::draw_filled_rect(10 + 32, 300 - 37 + 300, 30, 35, color::blue(220));
+					render::draw_text_string(18 + 31, 305 - 35 + 300, render::fonts::esp_font, "W", false, color::blue(220));
+
+					break;
+
+				case VK_SPACE:
+
+					render::draw_filled_rect(10, 200 + 160 + 277, 95, 35, color::blue(220));
+					render::draw_text_string(30, 585 - 220 + 277, render::fonts::esp_font, "Space", false, color::blue(220));
+
+					break;
+				}
+
+	}
 }

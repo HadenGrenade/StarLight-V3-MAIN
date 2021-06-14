@@ -18,6 +18,7 @@ namespace misc {
 		void noflash();
 	};
 	void chatspam();
+	void duck();
 	void clantag();
 	void fpsboost();
 }
@@ -34,7 +35,6 @@ namespace visuals
 			this->h = h;
 		}
 	};
-
 	bool get_player_box(player_t* ent, box& in);
 	void draw_box(player_t* ent, box bbox);
 	void draw_name(player_t* ent, box bbox);
@@ -46,7 +46,10 @@ namespace visuals
 	void spectator_list();
 	void loop_entities();
 	void nightmode();
-	void watermark();
+	void chicken_esp(entity_t* chicken, box bbox);
+	void watermark();	
+	void Draw1();
+
 }
 
 struct tick_info
@@ -108,6 +111,7 @@ namespace aimbot {
 	void weapon_cfg(weapon_t* weapon);
 	int get_hitbox(int hitpoint);
 	int get_hitbox(player_t* player, matrix_t* matrix, vec3_t eye_pos);
+	void aimbot_chicken(c_usercmd* cmd);
 	void run(c_usercmd* cmd);
 }
 

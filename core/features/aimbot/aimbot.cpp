@@ -131,23 +131,46 @@ void backtracking::run(c_usercmd* cmd) {
 }
 
 /* RCS */
+/*
+void recoil::rcs(c_usercmd* cmd) {
+	menu::JunkCodeTutorial();
 
-void  aimbot::rcs(c_usercmd* cmd, vec3_t& angles)
-{
-	static vec3_t old_punch{ 0, 0, 0 };
-	auto scale = interfaces::console->get_convar("weapon_recoil_scale");
-	auto punch = csgo::local_player->aim_punch_angle() * 2;
+	if (!variables::rcs)
+		return;
 
-	punch.x *= variables::rcs_y;
-	punch.y *= variables::rcs_x;
+	if (!csgo::local_player)
+		return;
 
-	auto rcs_angle = cmd->viewangles += (old_punch - punch);
-	interfaces::engine->set_view_angles(rcs_angle);
+	weapon_t* weapon = csgo::local_player->active_weapon();
 
-	old_punch = punch;
+	if (!weapon)
+		return;
+
+	if (!weapon->is_pistol() && !weapon->is_sniper())
+	{
+		static vec3_t vOldPunch = { 0.0f, 0.0f, 0.0f };
+		vec3_t vNewPunch = csgo::local_player->aim_punch_angle();
+
+		vNewPunch *= 2.f;
+
+		vNewPunch -= vOldPunch;
+		vNewPunch += vOldPunch;
+
+		vec3_t vFinal = cmd->viewangles - (vNewPunch - vOldPunch);
+
+		math::sanitize(vFinal);
+
+		if (!math::sanitize(vFinal))
+			return;
+
+		math::Clamp(vFinal);
+
+		interfaces::engine->set_view_angles(vFinal);
+		
+		vOldPunch = vNewPunch;
+	}
 }
-
-
+*/
 /* Aimbot */
 
 aimbot_ctx_t aimbot::ctx;
@@ -162,23 +185,16 @@ void aimbot::weapon_cfg(weapon_t* weapon) {
 		ctx.fov = variables::aim_fov_pistol;
 		menu::JunkCodeTutorial();
 		ctx.smooth = variables::smooth_pistol;
-		ctx.rcs_x = variables::rcs_x;
-		ctx.rcs_x = variables::rcs_y;
-
 	}
 	else if (weapon->is_sniper()) {
 		ctx.fov = variables::aim_fov_sniper;
 		ctx.smooth = variables::smooth_sniper;
 		menu::JunkCodeTutorial();
-		ctx.rcs_x = variables::rcs_x;
-		ctx.rcs_x = variables::rcs_y;
 	}
 	else {
 		ctx.fov = variables::aim_fov_rifle;
 		menu::JunkCodeTutorial();
 		ctx.smooth = variables::smooth_rifle;
-		ctx.rcs_x = variables::rcs_x;
-		ctx.rcs_x = variables::rcs_y;
 	}
 }
 
@@ -231,8 +247,6 @@ void aimbot::run(c_usercmd* cmd)
 	if (!variables::aimbot)
 		return;
 
-	if (variables::rcs)
-		aimbot::rcs(cmd, cmd->viewangles);
 	float max_player_fov = ctx.fov;
 	vec3_t aim_angle;
 	vec3_t view_angle;
@@ -281,8 +295,6 @@ void aimbot::run(c_usercmd* cmd)
 		aim_angle = math::calculate_angle(eye_pos, ctx.hitbox_pos);
 		math::sanitize_angle(aim_angle);
 		vec3_t recoil_angle = csgo::local_player->aim_punch_angle() * interfaces::console->get_convar("weapon_recoil_scale")->get_float();
-		if (variables::rcs)
-			aim_angle -= csgo::local_player->aim_punch_angle() * 2;
 		math::sanitize_angle(recoil_angle);
 		aim_angle -= recoil_angle;
 		math::sanitize_angle(view_angle);

@@ -161,7 +161,7 @@ void chams::run(hooks::draw_model_execute::fn ofunc, i_mat_render_context* ctx, 
 		if (info.model) {
 			std::string model_name = interfaces::model_info->get_model_name(info.model);
 
-			if (model_name.find("models/player/") != std::string::npos && variables::chams) {
+			if (model_name.find("models") != std::string::npos && variables::chams) {
 				auto player = reinterpret_cast<player_t*>(interfaces::entity_list->get_client_entity(info.entity_index));
 				if (csgo::local_player && player && player->is_player() && !player->dormant() && player->is_alive()) {
 					if (player->team() != csgo::local_player->team()) {

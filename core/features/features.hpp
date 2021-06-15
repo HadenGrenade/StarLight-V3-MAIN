@@ -106,8 +106,8 @@ struct aimbot_ctx_t {
 };
 
 namespace aimbot {
-	extern aimbot_ctx_t ctx;
 	void rcs(c_usercmd* cmd, vec3_t& angles);
+	extern aimbot_ctx_t ctx;
 	void weapon_cfg(weapon_t* weapon);
 	int get_hitbox(int hitpoint);
 	int get_hitbox(player_t* player, matrix_t* matrix, vec3_t eye_pos);

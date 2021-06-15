@@ -180,6 +180,7 @@ bool __stdcall hooks::create_move::hook(float input_sample_frametime, c_usercmd*
 
 	misc::visual::noflash();
 
+
 	aimbot::rcs(cmd, cmd->viewangles);
 
 	if (variables::bullrush)

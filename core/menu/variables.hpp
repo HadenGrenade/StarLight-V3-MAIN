@@ -158,7 +158,6 @@ namespace variables {
 	inline float rcs_x = 0;
 	inline bool lbunny = 0;  // legit bunny
 	inline bool pbunny = 0;  // perfect bunny
-
 	namespace menu {
 		inline bool opened = false;
 		inline int x = 190, y = 250;

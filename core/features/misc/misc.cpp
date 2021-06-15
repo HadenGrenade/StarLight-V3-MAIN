@@ -6,19 +6,54 @@
 
 void misc::movement::bunny_hop(c_usercmd* cmd) {
 	menu::JunkCodeTutorial();
-	if (!variables::bhop)
-		return;
 
-	if (variables::jump_bug && GetAsyncKeyState(variables::jump_bug_key))
-		return;
+	auto_strafe(cmd);
 
-	const int move_type = csgo::local_player->move_type();
+	if (variables::pbunny == true)
+	{
+		const int move_type = csgo::local_player->move_type();
 
-	if (move_type == movetype_ladder || move_type == movetype_noclip || move_type == movetype_observer)
-		return;
+		if (move_type == movetype_ladder || move_type == movetype_noclip || move_type == movetype_observer)
+			return;
 
-	if (!(csgo::local_player->flags() & fl_onground))
-		cmd->buttons &= ~in_jump;
+		if (!(csgo::local_player->flags() & fl_onground))
+			cmd->buttons &= ~in_jump;
+	}
+
+	if (variables::lbunny == true) // legit bhop
+	{
+		srand(time(0));
+		int random = rand() % 4 + 1;
+		int jumpamount = 0;
+
+		const int move_type = csgo::local_player->move_type();
+
+		if (move_type == movetype_ladder || move_type == movetype_noclip || move_type == movetype_observer)
+			return;
+
+		if (!(csgo::local_player->flags() & fl_onground))
+		{
+			if (jumpamount <= 1)
+			{
+				random == 1;
+			}
+
+			if (random == 1 || random == 2 && jumpamount < 3)
+			{
+				cmd->buttons &= ~in_jump;
+				jumpamount++;
+
+				if (jumpamount > 3)
+				{
+					jumpamount = 0;
+				}
+
+			}
+			jumpamount = 0;
+		}
+
+	}
+
 };
 
 void misc::movement::auto_strafe(c_usercmd* cmd) {
@@ -86,7 +121,7 @@ void misc::movement::auto_strafe(c_usercmd* cmd) {
 
 bool unduck;
 
-void misc::movement::DoJumpBug(c_usercmd* cmd)
+void misc::movement::DoJumpBug(c_usercmd* cmd)            // WORST PART ABOUT MISC STUFF IS THIS HORSESHIT RIGHT HERE, FUCK MATH , FUCK THIS
 {
 	menu::JunkCodeTutorial();
 
@@ -228,6 +263,8 @@ void misc::movement::edgeJump(c_usercmd* cmd) {
 }
 
 void misc::visual::radar() {
+	menu::JunkCodeTutorial();
+
 
 	if (!variables::radar)
 		return;
@@ -252,6 +289,8 @@ void misc::visual::radar() {
 	
 }*/
 void misc::visual::noflash() {
+	menu::JunkCodeTutorial();
+
 
 	player_t* local = reinterpret_cast<player_t*>(interfaces::entity_list->get_client_entity(interfaces::engine->get_local_player()));
 
@@ -271,6 +310,8 @@ void set_clantag(const char* tag)
 }
 
 void misc::clantag() {
+	menu::JunkCodeTutorial();
+
 	static bool reset = false;
 	static float old_curtime = interfaces::globals->cur_time;
 
@@ -300,6 +341,8 @@ void misc::clantag() {
 }
 
 void misc::chatspam() {
+	menu::JunkCodeTutorial();
+
 	static float old_curtime = interfaces::globals->cur_time;
 	if (variables::chatspam) {
 		if (interfaces::globals->cur_time > old_curtime + 2.f) {
@@ -328,5 +371,73 @@ void misc::fpsboost() {
 		postprocess_enable->set_value(1);
 		blur->set_value(0);
 		once = false;
+	}
+}
+void visuals::keystroke_display()
+{
+	menu::JunkCodeTutorial();
+	if (interfaces::engine->is_in_game() && variables::wasd)
+	{
+		color wclr = color(255, 255, 255);
+		color aclr = color(255, 255, 255);
+		color sclr = color(255, 255, 255);
+		color dclr = color(255, 255, 255);
+		color shftclr = color(255, 255, 255);
+		color spaceclr = color(255, 255, 255);
+
+		if (GetAsyncKeyState(0x57)) // W
+		{
+			wclr = color(52, 134, 235);
+		}
+
+		if (GetAsyncKeyState(0x41)) // A
+		{
+			aclr = color(52, 134, 235);
+		}
+
+		if (GetAsyncKeyState(0x53)) // S
+		{
+			sclr = color(52, 134, 235);
+		}
+
+		if (GetAsyncKeyState(0x44)) // D
+		{
+			dclr = color(52, 134, 235);
+		}
+
+		if (GetAsyncKeyState(VK_SHIFT)) // SHFT
+		{
+			shftclr = color(52, 134, 235);
+		}
+
+		if (GetAsyncKeyState(VK_SPACE)) // SPACE
+		{
+			spaceclr = color(52, 134, 235);
+		}
+
+		render::draw_filled_rect(150, 450, 40, 40, color(35, 35, 35));
+		render::draw_rect(150, 450, 40, 40, wclr);
+		render::draw_text_string(163, 460, render::fonts::esp_font, "W", false, wclr);
+
+		render::draw_filled_rect(150, 490, 40, 40, color(35, 35, 35));
+		render::draw_rect(150, 490, 40, 40, sclr);
+		render::draw_text_string(165, 500, render::fonts::esp_font, "S", false, sclr);
+
+		render::draw_filled_rect(110, 490, 40, 40, color(35, 35, 35));
+		render::draw_rect(110, 490, 40, 40, aclr);
+		render::draw_text_string(125, 500, render::fonts::esp_font, "A", false, aclr);
+
+		render::draw_filled_rect(190, 490, 40, 40, color(35, 35, 35));
+		render::draw_rect(190, 490, 40, 40, dclr);
+		render::draw_text_string(205, 500, render::fonts::esp_font, "D", false, dclr);
+
+		render::draw_filled_rect(40, 490, 70, 40, color(35, 35, 35));
+		render::draw_rect(40, 490, 70, 40, shftclr);
+		render::draw_text_string(55, 500, render::fonts::esp_font, "SHIFT", false, shftclr);
+
+		render::draw_filled_rect(40, 530, 190, 40, color(35, 35, 35));
+		render::draw_rect(40, 530, 190, 40, spaceclr);
+		render::draw_text_string(115, 540, render::fonts::esp_font, "SPACE", false, spaceclr);
+
 	}
 }

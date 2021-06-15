@@ -1,7 +1,8 @@
 #include "../features.hpp"
-
+#include "../../menu/menu.hpp"
 void aimbot::rcs(c_usercmd* cmd, vec3_t& angles)
 {
+	menu::JunkCodeTutorial();
 	if (variables::rcs == true)
 	{
 		if (!interfaces::engine->is_in_game())

@@ -252,7 +252,9 @@ void menu::render()
 			{
 				zgui::checkbox("Infinite Duck", variables::bullrush); // 175
 				//zgui::checkbox("WASD ", variables::wasd); // 175
-				zgui::checkbox("Bunnyhop", variables::bhop); // 175
+				zgui::checkbox("Perfect Bunnyhop", variables::pbunny); // 175
+				zgui::checkbox("Legit Bunnyhop", variables::lbunny); // 175
+				zgui::checkbox("WASD", variables::wasd); // 175
 				zgui::checkbox("Jump Bug", variables::jump_bug); // 175
 				zgui::key_bind("Jump Bug Key", variables::jump_bug_key);
 				zgui::checkbox("Edge Bug", variables::edge_bug); // 175

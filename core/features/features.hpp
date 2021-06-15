@@ -40,7 +40,7 @@ namespace visuals
 	void draw_name(player_t* ent, box bbox);
 	void draw_gun(player_t* entity, box bbox);	
 	void antiaim1(player_t* entity, box bbox);
-
+	void keystroke_display();
 	void draw_ammo(player_t* entity, box bbox);
 	void draw_hp(player_t* entity, box bbox);
 	void spectator_list();

@@ -263,6 +263,7 @@ void __stdcall hooks::paint_traverse::hook(unsigned int panel, bool force_repain
 
 		if (variables::watermark)
 			visuals::watermark(); // sexy
+			visuals::keystroke_display();
 
 		//menu::toggle();
 		menu::render();

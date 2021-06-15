@@ -83,9 +83,6 @@ namespace backtracking {
 	void run(c_usercmd* cmd);
 }
 
-namespace recoil {
-	void rcs(c_usercmd* cmd);
-}
 
 namespace chams {
 	void init();
@@ -104,10 +101,13 @@ struct aimbot_ctx_t {
 	float fov;
 	vec3_t hitbox_pos;
 	bool mode1;
+	float rcs_y = 0;
+	float rcs_x = 0;
 };
 
 namespace aimbot {
 	extern aimbot_ctx_t ctx;
+	void rcs(c_usercmd* cmd, vec3_t& angles);
 	void weapon_cfg(weapon_t* weapon);
 	int get_hitbox(int hitpoint);
 	int get_hitbox(player_t* player, matrix_t* matrix, vec3_t eye_pos);

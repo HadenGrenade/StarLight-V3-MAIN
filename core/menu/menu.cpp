@@ -120,7 +120,12 @@ void menu::render()
 					}
 					}
 					zgui::checkbox(XorStr("Backtrack"), variables::backtrack);
-					zgui::checkbox(XorStr("Recoil Control System"), variables::rcs);
+					zgui::checkbox(XorStr("Standalone RCS"), variables::rcs);
+					if (variables::rcs) {
+						zgui::slider_float(XorStr("RCS Y"), 0.f, 1.f, variables::rcs_x);
+						zgui::slider_float(XorStr("RCS X"), 0.f, 1.f, variables::rcs_y);
+					}
+
 					zgui::checkbox(XorStr("AntiAim"), variables::antiaim);
 
 					const std::vector<zgui::multi_select_item> AACombo{ {XorStr("LBY"), &variables::lby},

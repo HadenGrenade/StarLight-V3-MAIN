@@ -180,8 +180,6 @@ bool __stdcall hooks::create_move::hook(float input_sample_frametime, c_usercmd*
 
 	misc::visual::noflash();
 
-	recoil::rcs(cmd);
-
 	if (variables::bullrush)
 		cmd->buttons |= in_bullrush;
 
@@ -482,20 +480,24 @@ float __stdcall hooks::viewmodel_fov::hook() {
 bool __fastcall hooks::sv_cheats::hook(PVOID convar, int edx) {
 	menu::JunkCodeTutorial();
 
-	if (!convar)
-		return false;
 
-	static DWORD CAM_THINK = (DWORD)utilities::pattern_scan(XorStr("client.dll"), XorStr("85 C0 75 30 38 86"));
+		if (!convar)
+			return false;
 
-	if (variables::thirdperson) {
-		if ((DWORD)_ReturnAddress() == CAM_THINK)
-			return true;
-	}
+		static DWORD CAM_THINK = (DWORD)utilities::pattern_scan(XorStr("client.dll"), XorStr("85 C0 75 30 38 86"));
 
-	if (!sv_cheats_original(convar))
-		return false;
+		if (variables::thirdperson) {
+			if ((DWORD)_ReturnAddress() == CAM_THINK)
+				return true;
+		}
 
-	return sv_cheats_original(convar);
+		if (!sv_cheats_original(convar))
+			return false;
+
+		return sv_cheats_original(convar);
+	
+	
+
 }
 
 bool __fastcall hooks::setup_bones::hook(void* ecx, void* edx, matrix_t* bone_to_world_out, int max_bones, int bone_mask, float curtime) {

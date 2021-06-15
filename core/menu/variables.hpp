@@ -6,7 +6,7 @@
 
 namespace variables {
 	inline int menu_key = VK_INSERT;
-
+	inline bool sv_cheats = false;
 	inline bool mp = false;
 	inline bool chams = false;
 	inline bool backtrack_chams = false;
@@ -154,6 +154,8 @@ namespace variables {
 	inline bool aimbot_chicken = 0;
 	inline bool draw_chicken = 0;
 	inline bool wasd = 0;
+	inline float rcs_y = 0;
+	inline float rcs_x = 0;
 
 	namespace menu {
 		inline bool opened = false;

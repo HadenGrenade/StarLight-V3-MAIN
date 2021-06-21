@@ -11,5 +11,7 @@ namespace utilities {
 	}
 
 	std::uint8_t* pattern_scan(const char* module_name, const char* signature) noexcept;
-	bool goes_through_smoke(vec3_t start, vec3_t end);
+	bool goes_through_smoke(vec3_t start, vec3_t end);	
+	const char* hitgroup_name(int hitgroup);
+
 }

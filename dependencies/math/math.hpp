@@ -45,7 +45,7 @@ namespace math {
 
 	/* Pasted Math Functions Yeah Yeah */
 
-	#define XM_CONST constexpr
+#define XM_CONST constexpr
 	XM_CONST float XM_2PI = 6.283185307f;
 	XM_CONST float XM_PIDIV2 = 1.570796327f;
 	XM_CONST float XM_1DIV2PI = 0.159154943f;

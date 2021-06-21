@@ -208,10 +208,9 @@ void triggerbot::magnet(c_usercmd* cmd)
 	auto weapon = csgo::local_player->active_weapon();
 
 	if (!weapon ||
-		weapon->is_knife() ||
-		weapon->is_nade() ||
-		weapon->is_c4() ||
-		weapon->is_taser())
+		weapon->get_type() == IS_KNIFE ||
+		weapon->get_type() == IS_GRENADE ||
+		weapon->get_type() == IS_MISC) 
 		return;
 
 	if (!weapon->clip1_count() || weapon->next_primary_attack() > interfaces::globals->cur_time)

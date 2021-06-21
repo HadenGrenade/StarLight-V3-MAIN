@@ -57,9 +57,9 @@ void antiaim::run(c_usercmd* cmd) {
 	if (csgo::local_player->move_type() == movetype_ladder) return;
 	if (cmd->buttons & in_use) return;
 	if (cmd->buttons & in_attack) return;
-	if (cmd->buttons & in_attack2 && weapon->is_knife()) return;
+	if (cmd->buttons & in_attack2 && weapon->get_type() == IS_KNIFE) return;
 	if (cmd->buttons & in_attack2 && weapon->item_definition_index() == WEAPON_REVOLVER) return;
-	if (weapon->is_nade()) return;
+	if (weapon->get_type() == IS_GRENADE) return;
 
 	csgo::send_packet = interfaces::engine->get_net_channel_info()->choked_packets >= 3;
 

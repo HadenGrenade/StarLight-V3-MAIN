@@ -95,12 +95,12 @@ void menu::render()
 			JunkCodeTutorial();
 
 			zgui::begin_groupbox(XorStr("Aimbot"), { 190, 325 });
-			{				
+			{
 				zgui::checkbox(XorStr("Aimbot"), variables::aimbot); // 175
 
 				if (variables::aimbot)
 				{
-					zgui::combobox(XorStr("Aimbot Selection"), { XorStr("Rifles"), XorStr("Pistols"), XorStr("Snipers") }, variables::weapon_config);
+					zgui::combobox(XorStr("Aimbot Selection"), { XorStr("Rifles"), XorStr("Pistols"), XorStr("Snipers"), XorStr("SMG") }, variables::weapon_config);
 					zgui::checkbox(XorStr("Silent Aim"), variables::mode1); // 
 					switch (variables::weapon_config) {
 					case 0: {
@@ -116,6 +116,11 @@ void menu::render()
 					case 2: {
 						zgui::slider_float(XorStr("Aimbot FOV"), 0.f, 10.f, variables::aim_fov_sniper);
 						zgui::slider_float(XorStr("Aimbot Smooth"), 0.f, 30.f, variables::smooth_sniper);
+						break;
+					}
+					case 3: {
+						zgui::slider_float(XorStr("Aimbot FOV"), 0.f, 10.f, variables::aim_fov_smg);
+						zgui::slider_float(XorStr("Aimbot Smooth"), 0.f, 30.f, variables::smooth_smg);
 						break;
 					}
 					}
@@ -135,7 +140,7 @@ void menu::render()
 
 
 				}
-				
+
 			}
 
 			zgui::next_column(195, 45);
@@ -154,8 +159,8 @@ void menu::render()
 					}
 					zgui::end_groupbox();
 				}
-			
-			zgui::end_groupbox();
+
+				zgui::end_groupbox();
 			}
 		}
 		else if (MenuTab == 2)
@@ -165,7 +170,7 @@ void menu::render()
 			if (VisualsTab == 0)
 			{
 				zgui::begin_groupbox(XorStr("Enemies"), { 190, 325 });
-				{					
+				{
 					zgui::checkbox(XorStr("ESP"), variables::esp);
 					if (variables::esp) {
 						zgui::checkbox(XorStr("Chams"), variables::chams);
@@ -188,7 +193,7 @@ void menu::render()
 						zgui::end_groupbox();
 					}
 				}
-							zgui::next_column(195, 45);
+				zgui::next_column(195, 45);
 
 				zgui::begin_groupbox(XorStr("Localplayer"), { 191, 240.75 });
 				{
@@ -267,13 +272,13 @@ void menu::render()
 		}
 		else if (MenuTab == 4)
 		{
-		JunkCodeTutorial();
+			JunkCodeTutorial();
 
 			if (SkinTab == 0) {
 				zgui::begin_groupbox("Skinchanger Main", { 385,325 });
 				{
 					zgui::combobox("Race", { "Default", "Black", "Mixed", "White", "Tan" }, variables::race);
-					zgui::checkbox("Enabled#skinchanger", variables::skinchanger);		
+					zgui::checkbox("Enabled#skinchanger", variables::skinchanger);
 					if (zgui::button("Force Update", { 120,14 }))
 						interfaces::clientstate->full_update();
 					zgui::combobox("Glove Model", { "Default", "Bloodhound", "Sport", "Driver", "Hand Wraps", "Moto", "Specialist", "Hydra" }, variables::glove_model);
@@ -365,14 +370,14 @@ void menu::render()
 				}
 			}
 			else if (SkinTab == 1) {
-				
+
 			}
-			
+
 		}
-		
+
 		zgui::end_window();
 	}
-	
+
 }
 
 void zgui_line(int x, int y, int x2, int y2, zgui::color c) noexcept
@@ -415,7 +420,7 @@ void menu::initialize()
 	JunkCodeTutorial();
 
 	variables::menu::opened = false;
-	
+
 	zgui::functions.draw_line = zgui_line;
 	zgui::functions.draw_rect = zgui_outline;
 	zgui::functions.draw_filled_rect = zgui_filled_rect;
@@ -425,4 +430,4 @@ void menu::initialize()
 	zgui::functions.get_curtime = zgui_get_curtime;
 
 	console::log("[setup] menu initialized!\n");
-} 
+}

@@ -64,3 +64,21 @@ bool utilities::goes_through_smoke(vec3_t start, vec3_t end) {
     static goes_through_smoke goes_through_smoke_fn = (goes_through_smoke)goes_through_smoke_offset;
     return goes_through_smoke_fn(start, end);
 }
+const char* utilities::hitgroup_name(int hitgroup) {
+    switch (hitgroup) {
+    case hitgroup_head:
+        return "head";
+    case hitgroup_leftleg:
+        return "left leg";
+    case hitgroup_rightleg:
+        return "right leg";
+    case hitgroup_stomach:
+        return "stomach";
+    case hitgroup_leftarm:
+        return "left arm";
+    case hitgroup_rightarm:
+        return "right arm";
+    default:
+        return "body";
+    }
+}

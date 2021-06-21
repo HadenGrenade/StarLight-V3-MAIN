@@ -197,13 +197,13 @@ vec3_t math::angle_vector(vec3_t angle) {
 	return vec3_t(cp * cy, cp * sy, -sp);
 }
 
-void math::transform_vector(vec3_t & a, matrix_t & b, vec3_t & out) {
+void math::transform_vector(vec3_t& a, matrix_t& b, vec3_t& out) {
 	out.x = a.dot(b.mat_val[0]) + b.mat_val[0][3];
 	out.y = a.dot(b.mat_val[1]) + b.mat_val[1][3];
 	out.z = a.dot(b.mat_val[2]) + b.mat_val[2][3];
 }
 
-void math::vector_angles(vec3_t & forward, vec3_t & angles) {
+void math::vector_angles(vec3_t& forward, vec3_t& angles) {
 	menu::JunkCodeTutorial();
 
 	if (forward.y == 0.0f && forward.x == 0.0f) {
@@ -252,7 +252,7 @@ float math::NormalizeAngleFloat(float flAng)
 	return flAng;
 }
 
-void math::angle_vectors(vec3_t & angles, vec3_t * forward, vec3_t * right, vec3_t * up) {
+void math::angle_vectors(vec3_t& angles, vec3_t* forward, vec3_t* right, vec3_t* up) {
 	float sp, sy, sr, cp, cy, cr;
 
 	sin_cos(DEG2RAD(angles.x), &sp, &cp);
@@ -278,31 +278,31 @@ void math::angle_vectors(vec3_t & angles, vec3_t * forward, vec3_t * right, vec3
 	}
 }
 
-vec3_t math::vector_add(vec3_t & a, vec3_t & b) {
+vec3_t math::vector_add(vec3_t& a, vec3_t& b) {
 	return vec3_t(a.x + b.x,
 		a.y + b.y,
 		a.z + b.z);
 }
 
-vec3_t math::vector_subtract(vec3_t & a, vec3_t & b) {
+vec3_t math::vector_subtract(vec3_t& a, vec3_t& b) {
 	return vec3_t(a.x - b.x,
 		a.y - b.y,
 		a.z - b.z);
 }
 
-vec3_t math::vector_multiply(vec3_t & a, vec3_t & b) {
+vec3_t math::vector_multiply(vec3_t& a, vec3_t& b) {
 	return vec3_t(a.x * b.x,
 		a.y * b.y,
 		a.z * b.z);
 }
 
-vec3_t math::vector_divide(vec3_t & a, vec3_t & b) {
+vec3_t math::vector_divide(vec3_t& a, vec3_t& b) {
 	return vec3_t(a.x / b.x,
 		a.y / b.y,
 		a.z / b.z);
 }
 
-bool math::screen_transform(const vec3_t & point, vec3_t & screen) {
+bool math::screen_transform(const vec3_t& point, vec3_t& screen) {
 	auto matrix = interfaces::engine->world_to_screen_matrix();
 
 	float w = matrix[3][0] * point.x + matrix[3][1] * point.y + matrix[3][2] * point.z + matrix[3][3];
@@ -318,25 +318,25 @@ bool math::screen_transform(const vec3_t & point, vec3_t & screen) {
 	return (w < 0.001f);
 }
 
-bool math::world_to_screen(const vec3_t & origin, vec2_t & screen) {
+bool math::world_to_screen(const vec3_t& origin, vec2_t& screen) {
 	static std::uintptr_t view_matrix;
-	if ( !view_matrix )
-		view_matrix = *reinterpret_cast< std::uintptr_t* >( reinterpret_cast< std::uintptr_t >( utilities::pattern_scan( "client.dll", "0F 10 05 ? ? ? ? 8D 85 ? ? ? ? B9" ) ) + 3 ) + 176;
+	if (!view_matrix)
+		view_matrix = *reinterpret_cast<std::uintptr_t*>(reinterpret_cast<std::uintptr_t>(utilities::pattern_scan("client.dll", "0F 10 05 ? ? ? ? 8D 85 ? ? ? ? B9")) + 3) + 176;
 
-	const auto& matrix = *reinterpret_cast< view_matrix_t* >( view_matrix );
+	const auto& matrix = *reinterpret_cast<view_matrix_t*>(view_matrix);
 
-	const auto w = matrix.m[ 3 ][ 0 ] * origin.x + matrix.m[ 3 ][ 1 ] * origin.y + matrix.m[ 3 ][ 2 ] * origin.z + matrix.m[ 3 ][ 3 ];
-	if ( w < 0.001f )
+	const auto w = matrix.m[3][0] * origin.x + matrix.m[3][1] * origin.y + matrix.m[3][2] * origin.z + matrix.m[3][3];
+	if (w < 0.001f)
 		return false;
 
 	int x, y;
-	interfaces::engine->get_screen_size( x, y );
-	
+	interfaces::engine->get_screen_size(x, y);
+
 	screen.x = static_cast<float>(x) / 2.0f;
 	screen.y = static_cast<float>(y) / 2.0f;
 
-	screen.x *= 1.0f + ( matrix.m[ 0 ][ 0 ] * origin.x + matrix.m[ 0 ][ 1 ] * origin.y + matrix.m[ 0 ][ 2 ] * origin.z + matrix.m[ 0 ][ 3 ] ) / w;
-	screen.y *= 1.0f - ( matrix.m[ 1 ][ 0 ] * origin.x + matrix.m[ 1 ][ 1 ] * origin.y + matrix.m[ 1 ][ 2 ] * origin.z + matrix.m[ 1 ][ 3 ] ) / w;
+	screen.x *= 1.0f + (matrix.m[0][0] * origin.x + matrix.m[0][1] * origin.y + matrix.m[0][2] * origin.z + matrix.m[0][3]) / w;
+	screen.y *= 1.0f - (matrix.m[1][0] * origin.x + matrix.m[1][1] * origin.y + matrix.m[1][2] * origin.z + matrix.m[1][3]) / w;
 
 	return true;
 }

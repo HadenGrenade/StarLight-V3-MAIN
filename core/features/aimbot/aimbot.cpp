@@ -52,7 +52,7 @@ int backtracking::closest_player = -1;
 int backtracking::closest_tick = -1;
 void backtracking::store(c_usercmd* cmd) {
 	menu::JunkCodeTutorial();
-	if (!csgo::local_player || !variables::backtrack )
+	if (!csgo::local_player || !variables::backtrack)
 		return;
 
 	if (!csgo::local_player->is_alive())
@@ -83,7 +83,7 @@ void backtracking::store(c_usercmd* cmd) {
 }
 void backtracking::run(c_usercmd* cmd) {
 	menu::JunkCodeTutorial();
-	if (!csgo::local_player || !variables::backtrack )
+	if (!csgo::local_player || !variables::backtrack)
 		return;
 
 	if (!csgo::local_player->is_alive())
@@ -134,39 +134,27 @@ void backtracking::run(c_usercmd* cmd) {
 /*
 void recoil::rcs(c_usercmd* cmd) {
 	menu::JunkCodeTutorial();
-
 	if (!variables::rcs)
 		return;
-
 	if (!csgo::local_player)
 		return;
-
 	weapon_t* weapon = csgo::local_player->active_weapon();
-
 	if (!weapon)
 		return;
-
 	if (!weapon->is_pistol() && !weapon->is_sniper())
 	{
 		static vec3_t vOldPunch = { 0.0f, 0.0f, 0.0f };
 		vec3_t vNewPunch = csgo::local_player->aim_punch_angle();
-
 		vNewPunch *= 2.f;
-
 		vNewPunch -= vOldPunch;
 		vNewPunch += vOldPunch;
-
 		vec3_t vFinal = cmd->viewangles - (vNewPunch - vOldPunch);
-
 		math::sanitize(vFinal);
-
 		if (!math::sanitize(vFinal))
 			return;
-
 		math::Clamp(vFinal);
-
 		interfaces::engine->set_view_angles(vFinal);
-		
+
 		vOldPunch = vNewPunch;
 	}
 }
@@ -181,20 +169,24 @@ void aimbot::weapon_cfg(weapon_t* weapon) {
 	ctx.hitpoint = 3;
 	ctx.mode == 1;
 
-	if (weapon->is_pistol()) {
+	if (weapon->get_type() == IS_PISTOL) {
 		ctx.fov = variables::aim_fov_pistol;
 		menu::JunkCodeTutorial();
 		ctx.smooth = variables::smooth_pistol;
 	}
-	else if (weapon->is_sniper()) {
+	else if (weapon->get_type() == IS_SNIPER) {
 		ctx.fov = variables::aim_fov_sniper;
 		ctx.smooth = variables::smooth_sniper;
 		menu::JunkCodeTutorial();
 	}
-	else {
+	else if (weapon->get_type() == IS_RIFLE) {
 		ctx.fov = variables::aim_fov_rifle;
-		menu::JunkCodeTutorial();
 		ctx.smooth = variables::smooth_rifle;
+	}
+	else if (weapon->get_type() == IS_SMG) {
+		ctx.fov = variables::aim_fov_smg;
+		ctx.smooth = variables::smooth_smg;
+
 	}
 }
 
@@ -225,9 +217,9 @@ int aimbot::get_hitbox(player_t* player, matrix_t* matrix, vec3_t eye_pos) {
 	}
 	return closest_hitbox;
 }
+
 void aimbot::run(c_usercmd* cmd)
 {
-	menu::JunkCodeTutorial();
 	if (!csgo::local_player ||
 		!csgo::local_player->is_alive())
 		return;
@@ -235,10 +227,9 @@ void aimbot::run(c_usercmd* cmd)
 	auto weapon = csgo::local_player->active_weapon();
 
 	if (!weapon ||
-		weapon->is_knife() ||
-		weapon->is_nade() ||
-		weapon->is_c4() ||
-		weapon->is_taser() ||
+		weapon->get_type() == IS_KNIFE ||
+		weapon->get_type() == IS_GRENADE ||
+		weapon->get_type() == IS_MISC ||
 		!(cmd->buttons & in_attack))
 		return;
 
@@ -288,8 +279,6 @@ void aimbot::run(c_usercmd* cmd)
 	}
 	if (closest_player != -1 && ctx.hitbox_pos.is_valid())
 	{
-		menu::JunkCodeTutorial();
-
 		auto player = reinterpret_cast<player_t*>(interfaces::entity_list->get_client_entity(closest_player));
 		if (!player) return;
 		aim_angle = math::calculate_angle(eye_pos, ctx.hitbox_pos);
@@ -305,7 +294,7 @@ void aimbot::run(c_usercmd* cmd)
 		if (!math::sanitize_angle(final_angle))
 			return;
 		cmd->viewangles = final_angle;
-		if (ctx.mode1)
+		if (ctx.mode != 2)
 			interfaces::engine->set_view_angles(cmd->viewangles);
 	}
 }

@@ -190,6 +190,7 @@ struct trace_t {
 	bool startSolid;
 	float fractionLeftSolid;
 	csurface_t surface;
+
 	int hitGroup;
 	short physicsBone;
 	player_t* entity;

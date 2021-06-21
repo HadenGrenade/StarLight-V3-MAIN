@@ -170,6 +170,19 @@ enum item_definition_indexes {
 	GLOVE_SPECIALIST = 5034,
 	GLOVE_HYDRA = 5035
 };
+enum weapon_type : std::int32_t
+{
+	IS_INVALID,
+	IS_GRENADE,
+	IS_KNIFE,
+	IS_MISC,
+	IS_PISTOL,
+	IS_SMG,
+	IS_RIFLE,
+	IS_SNIPER,
+	IS_HEAVY,
+	IS_MAX
+};
 
 class entity_t {
 public:
@@ -258,6 +271,7 @@ public:
 		return ( *static_cast< original_fn** >( networkable( ) ) )[ 9 ]( networkable( ) );
 	}
 	
+	
 	NETVAR("DT_CSPlayer", "m_fFlags", flags, int)
 	NETVAR("DT_BaseEntity", "m_hOwnerEntity", owner_handle, unsigned long)
 	NETVAR("DT_CSPlayer", "m_flSimulationTime", simulation_time, float)
@@ -297,35 +311,90 @@ public:
 	NETVAR("DT_WeaponCSBaseGun", "m_zoomLevel", zoom_level, float)
 	NETVAR("DT_BaseAttributableItem", "m_iItemDefinitionIndex", item_definition_index, short)
 	NETVAR("DT_BaseCombatWeapon", "m_iEntityQuality", entity_quality, int)
-
-	bool is_pistol() {
-		return (this->get_weapon_data()->weapon_type == cs_weapon_type::WEAPONTYPE_PISTOL);
-	}
-
-	bool is_sniper() {
-		return (this->item_definition_index() == WEAPON_AWP ||
-			this->item_definition_index() == WEAPON_SSG08);
-	}
-
-	bool is_auto() {
-		return (this->item_definition_index() == WEAPON_SCAR20 ||
-			this->item_definition_index() == WEAPON_G3SG1);
-	}
-
-	bool is_knife() {
-		return (this->get_weapon_data()->weapon_type == cs_weapon_type::WEAPONTYPE_KNIFE);
-	}
-
-	bool is_nade() {
-		return (this->get_weapon_data()->weapon_type == cs_weapon_type::WEAPONTYPE_GRENADE);
-	}
-
-	bool is_c4() {
-		return (this->get_weapon_data()->weapon_type == cs_weapon_type::WEAPONTYPE_C4);
-	}
-
-	bool is_taser() {
-		return (this->item_definition_index() == WEAPON_TASER);
+		std::int32_t get_type()
+	{
+		if (!this) return IS_INVALID;
+		std::int32_t id = this->item_definition_index();
+		switch (id) {
+		case WEAPON_DEAGLE:
+		case WEAPON_P250:
+		case WEAPON_USP_SILENCER:
+		case WEAPON_HKP2000:
+		case WEAPON_GLOCK:
+		case WEAPON_FIVESEVEN:
+		case WEAPON_TEC9:
+		case WEAPON_ELITE:
+		case WEAPON_REVOLVER:
+		case WEAPON_CZ75A:
+			return IS_PISTOL;
+			break;
+		case WEAPON_MP9:
+		case WEAPON_MP7:
+		case WEAPON_UMP45:
+		case WEAPON_BIZON:
+		case WEAPON_P90:
+		case WEAPON_MAC10:
+			return IS_SMG;
+			break;
+		case WEAPON_KNIFE_BAYONET:
+		case WEAPON_KNIFE_CSS:
+		case WEAPON_KNIFE_FLIP:
+		case WEAPON_KNIFE_GUT:
+		case WEAPON_KNIFE_KARAMBIT:
+		case WEAPON_KNIFE_M9_BAYONET:
+		case WEAPON_KNIFE_TACTICAL:
+		case WEAPON_KNIFE_FALCHION:
+		case WEAPON_KNIFE_SURVIVAL_BOWIE:
+		case WEAPON_KNIFE_BUTTERFLY:
+		case WEAPON_KNIFE_PUSH:
+		case WEAPON_KNIFE_CORD:
+		case WEAPON_KNIFE_CANIS:
+		case WEAPON_KNIFE_URSUS:
+		case WEAPON_KNIFE_GYPSY_JACKKNIFE:
+		case WEAPON_KNIFE_OUTDOOR:
+		case WEAPON_KNIFE_STILETTO:
+		case WEAPON_KNIFE:
+		case WEAPON_KNIFE_T:
+			return IS_KNIFE;
+			break;
+		case WEAPON_SAWEDOFF:
+		case WEAPON_XM1014:
+		case WEAPON_MAG7:
+		case WEAPON_NOVA:
+		case WEAPON_M249:
+		case WEAPON_NEGEV:
+			return IS_HEAVY;
+		case WEAPON_TASER:
+		case WEAPON_C4:
+			return IS_MISC;
+			break;
+		case WEAPON_HEGRENADE:
+		case WEAPON_FLASHBANG:
+		case WEAPON_DECOY:
+		case WEAPON_SMOKEGRENADE:
+		case WEAPON_INCGRENADE:
+		case WEAPON_MOLOTOV:
+			return IS_GRENADE;
+			break;
+		case WEAPON_AK47:
+		case WEAPON_M4A1:
+		case WEAPON_M4A1_SILENCER:
+		case WEAPON_GALILAR:
+		case WEAPON_FAMAS:
+		case WEAPON_AUG:
+		case WEAPON_SG556:
+			return IS_RIFLE;
+			break;
+		case WEAPON_SCAR20:
+		case WEAPON_G3SG1:
+		case WEAPON_SSG08:
+		case WEAPON_AWP:
+			return IS_SNIPER;
+			break;
+		default:
+			return IS_KNIFE;
+		}
+		return IS_INVALID;
 	}
 
 	float inaccuracy() {
@@ -450,14 +519,14 @@ public:
 		return tr.entity == player || tr.flFraction > 0.97f;
 	}
 
-	vec3_t get_bone_position(int bone) {
+	vec3_t get_bone_position(int bone)
+	{
 		matrix_t bone_matrices[128];
 		if (setup_bones(bone_matrices, 128, 256, 0.0f))
 			return vec3_t{ bone_matrices[bone][0][3], bone_matrices[bone][1][3], bone_matrices[bone][2][3] };
 		else
 			return vec3_t{ };
 	}
-
 	vec3_t get_hitbox_position(int hitbox_id) {
 		matrix_t bone_matrix[MAXSTUDIOBONES];
 
@@ -479,7 +548,6 @@ public:
 		}
 		return vec3_t{};
 	}
-
 	vec3_t get_hitbox_position(int hitbox_id, matrix_t* matrix) {
 		auto studio_model = interfaces::model_info->get_studio_model(model());
 
@@ -498,7 +566,45 @@ public:
 		}
 		return vec3_t{};
 	}
+	bool hit_chance(std::float_t hitchance)
+	{
+		if (!active_weapon())
+			return false;
 
+		if (hitchance > 0 && active_weapon()->item_definition_index() != WEAPON_REVOLVER) {
+			std::float_t Inaccuracy = active_weapon()->inaccuracy();
+
+			if (Inaccuracy == 0) {
+				Inaccuracy = 0.0000001;
+			}
+
+			Inaccuracy = 1 / Inaccuracy;
+			return (((hitchance * 1.5f) <= Inaccuracy) ? true : false);
+		}
+		return true;
+	}
+	bool is_enemy()
+	{
+		auto local_player = reinterpret_cast<player_t*>(interfaces::entity_list->get_client_entity(interfaces::engine->get_local_player()));
+		if (!local_player)return false;
+
+		if (!this->is_alive())return false;
+
+		if (!team())return false;
+		if (local_player->team() != this->team())return true;
+
+		static convar* game_type = nullptr;
+		if (!game_type)game_type = interfaces::console->get_convar("game_type");
+		game_type->flags &= ~fcvar_cheat;
+
+		if (game_type->get_int() == 6) {
+			if (!survival_team())return false;
+			if (local_player->survival_team() == -1)return true;
+			if (local_player->survival_team() != this->survival_team())return true;
+		}
+
+		return false;
+	}
 	bool is_alive() {
 		if ( !this ) return false;
 		return this->health() > 0;

@@ -75,7 +75,7 @@ bool hooks::initialize() {
 		throw std::runtime_error(XorStr("failed to initialize sv_cheats. (outdated index?)"));
 		return false;
 	}
-	
+
 	if (MH_CreateHook(setup_bones_target, &setup_bones::hook, reinterpret_cast<void**>(&setup_bones_original)) != MH_OK) {
 		throw std::runtime_error(XorStr("failed to initialize setup_bones. (outdated index?)"));
 		return false;
@@ -85,7 +85,7 @@ bool hooks::initialize() {
 		throw std::runtime_error(XorStr("failed to initialize svpureloosefiles. (outdated index?)"));
 		return false;
 	}
-	
+
 	if (MH_CreateHook(CheckFileCRCsWithServer_target, &hkCheckFileCRCsWithServer::hook, reinterpret_cast<void**>(&CheckFileCRCsWithServer_original)) != MH_OK) {
 		throw std::runtime_error(XorStr("failed to initialize CheckFileCRCsWithServer. (outdated index?)"));
 		return false;
@@ -180,11 +180,11 @@ bool __stdcall hooks::create_move::hook(float input_sample_frametime, c_usercmd*
 
 	misc::visual::noflash();
 
+	triggerbot::run(cmd);
 
 	aimbot::rcs(cmd, cmd->viewangles);
-
-	if (variables::bullrush)
-		cmd->buttons |= in_bullrush;
+		if (variables::bullrush)
+			cmd->buttons |= in_bullrush;
 
 	prediction::start(cmd); {
 
@@ -198,8 +198,6 @@ bool __stdcall hooks::create_move::hook(float input_sample_frametime, c_usercmd*
 		backtracking::store(cmd);
 		backtracking::run(cmd);
 		aimbot::run(cmd);
-		triggerbot::magnet(cmd);
-		triggerbot::run(cmd);
 		antiaim::run(cmd);
 		math::correct_movement(old_viewangles, cmd, old_forwardmove, old_sidemove);
 	} prediction::end();
@@ -264,7 +262,7 @@ void __stdcall hooks::paint_traverse::hook(unsigned int panel, bool force_repain
 
 		if (variables::watermark)
 			visuals::watermark(); // sexy
-			visuals::keystroke_display();
+		visuals::keystroke_display();
 
 		//menu::toggle();
 		menu::render();
@@ -277,7 +275,7 @@ void __stdcall hooks::paint_traverse::hook(unsigned int panel, bool force_repain
 		if (interfaces::engine->is_in_game() && interfaces::engine->is_connected() && csgo::local_player) {
 			weapon_t* Weapon = csgo::local_player->active_weapon();
 
-			if (Weapon && variables::removescope && (Weapon->is_sniper() || Weapon->is_auto()) && csgo::local_player->is_scoped() && csgo::local_player)
+			if (Weapon && variables::removescope && (Weapon->get_type() == IS_SNIPER) && csgo::local_player->is_scoped() && csgo::local_player)
 			{
 				render::draw_line(screen_x / 2, 0, screen_x / 2, screen_y, color(0, 0, 0, 150));
 				render::draw_line(0, screen_y / 2, screen_x, screen_y / 2, color(0, 0, 0, 150));
@@ -395,31 +393,31 @@ void __stdcall hooks::frame_stage_notify::hook(int frame_stage) {
 
 	animations::animation_fix(frame_stage);
 
-	if ( !interfaces::engine->is_in_game ( ) || !interfaces::engine->is_connected ( ) ) {
-		resolver_reset ( );
+	if (!interfaces::engine->is_in_game() || !interfaces::engine->is_connected()) {
+		resolver_reset();
 	}
-	else if ( csgo::local_player && csgo::local_player->is_alive() ) {
-		for ( int i = 1; i <= interfaces::globals->max_clients; i++ ) {
-			auto entity = reinterpret_cast< player_t* >( interfaces::entity_list->get_client_entity ( i ) );
+	else if (csgo::local_player && csgo::local_player->is_alive()) {
+		for (int i = 1; i <= interfaces::globals->max_clients; i++) {
+			auto entity = reinterpret_cast<player_t*>(interfaces::entity_list->get_client_entity(i));
 
-			if ( !entity
+			if (!entity
 				|| !csgo::local_player
-				|| !entity->is_alive ( )
+				|| !entity->is_alive()
 				|| entity == csgo::local_player
-				|| entity->team ( ) == csgo::local_player->team ( ) )
+				|| entity->team() == csgo::local_player->team())
 				continue;
 
 			player_info_t player_info;
-			interfaces::engine->get_player_info ( entity->index ( ), &player_info );
+			interfaces::engine->get_player_info(entity->index(), &player_info);
 
 			/* i removed this to test if resolver sets feet yaw properly (add back later) */
 			//if ( player_info.fakeplayer ) // skip bots
 			//	continue;
 
-			if ( frame_stage == FRAME_NET_UPDATE_END )
-				resolver_resolve_player ( entity );
-			else if ( frame_stage == FRAME_RENDER_START && variables::resolver )
-				resolver_apply_angles ( entity );
+			if (frame_stage == FRAME_NET_UPDATE_END)
+				resolver_resolve_player(entity);
+			else if (frame_stage == FRAME_RENDER_START && variables::resolver)
+				resolver_apply_angles(entity);
 		}
 	}
 
@@ -485,39 +483,39 @@ bool __fastcall hooks::sv_cheats::hook(PVOID convar, int edx) {
 	menu::JunkCodeTutorial();
 
 
-		if (!convar)
-			return false;
+	if (!convar)
+		return false;
 
-		static DWORD CAM_THINK = (DWORD)utilities::pattern_scan(XorStr("client.dll"), XorStr("85 C0 75 30 38 86"));
+	static DWORD CAM_THINK = (DWORD)utilities::pattern_scan(XorStr("client.dll"), XorStr("85 C0 75 30 38 86"));
 
-		if (variables::thirdperson) {
-			if ((DWORD)_ReturnAddress() == CAM_THINK)
-				return true;
-		}
+	if (variables::thirdperson) {
+		if ((DWORD)_ReturnAddress() == CAM_THINK)
+			return true;
+	}
 
-		if (!sv_cheats_original(convar))
-			return false;
+	if (!sv_cheats_original(convar))
+		return false;
 
-		return sv_cheats_original(convar);
-	
-	
+	return sv_cheats_original(convar);
+
+
 
 }
 
 bool __fastcall hooks::setup_bones::hook(void* ecx, void* edx, matrix_t* bone_to_world_out, int max_bones, int bone_mask, float curtime) {
 	const auto player = (player_t*)((uintptr_t)ecx - 0x4);
 
-	if (player && player->client_class ( ) && player->client_class()->class_id == ccsplayer && !player->dormant()) {
-		const auto backup_effects = *( uint32_t* ) ( ( uintptr_t ) player + 0xF0 );
-		const auto backup_shit = *( uint32_t* ) ( ( uintptr_t ) player + 0xA68 );
+	if (player && player->client_class() && player->client_class()->class_id == ccsplayer && !player->dormant()) {
+		const auto backup_effects = *(uint32_t*)((uintptr_t)player + 0xF0);
+		const auto backup_shit = *(uint32_t*)((uintptr_t)player + 0xA68);
 
-		*( uint32_t* ) ( ( uintptr_t ) player + 0xA68 ) = 0;
-		*( uint32_t* ) ( ( uintptr_t ) player + 0xF0 ) |= 0x8;
+		*(uint32_t*)((uintptr_t)player + 0xA68) = 0;
+		*(uint32_t*)((uintptr_t)player + 0xF0) |= 0x8;
 
-		bool ret = setup_bones_original ( ecx, bone_to_world_out, max_bones, bone_mask, curtime );
+		bool ret = setup_bones_original(ecx, bone_to_world_out, max_bones, bone_mask, curtime);
 
-		*( uint32_t* ) ( ( uintptr_t ) player + 0xF0 ) = backup_effects;
-		*( uint32_t* ) ( ( uintptr_t ) player + 0xA68 ) = backup_shit;
+		*(uint32_t*)((uintptr_t)player + 0xF0) = backup_effects;
+		*(uint32_t*)((uintptr_t)player + 0xA68) = backup_shit;
 
 		return ret;
 	}

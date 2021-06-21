@@ -83,10 +83,10 @@ void skinchanger::run() {
 		auto weapon_atr = reinterpret_cast<attributable_item_t*>(interfaces::entity_list->get_client_entity_handle(my_weapons[i]));
 		auto weapon = reinterpret_cast<weapon_t*>(interfaces::entity_list->get_client_entity_handle(my_weapons[i]));
 
-		if (!weapon_atr || !weapon || weapon->is_c4() || weapon->is_nade() || weapon->is_taser())
+		if (!weapon_atr || !weapon || weapon->get_type() == IS_MISC || weapon->get_type() == IS_GRENADE )
 			return;
 
-		if (weapon->is_knife()) {
+		if (weapon->get_type() == IS_GRENADE) {
 			switch (variables::knife_model) {
 			case 0:
 				break;

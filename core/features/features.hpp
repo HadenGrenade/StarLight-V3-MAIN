@@ -46,7 +46,7 @@ namespace visuals
 	void spectator_list();
 	void loop_entities();
 	void nightmode();
-	void watermark();	
+	void watermark();
 	void Draw1();
 
 }
@@ -171,10 +171,10 @@ struct fake_state_t {
 
 extern fake_state_t fake_state;
 
-void resolver_reset ( );
-bool resolver_has_antiaim ( player_t* player );
-bool resolver_resolve_player ( player_t* player );
-bool resolver_apply_angles ( player_t* player );
+void resolver_reset();
+bool resolver_has_antiaim(player_t* player);
+bool resolver_resolve_player(player_t* player);
+bool resolver_apply_angles(player_t* player);
 
 /* Math Shit */
 

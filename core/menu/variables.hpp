@@ -48,6 +48,9 @@ namespace variables {
 	inline float aim_fov_sniper = 0;
 	inline float smooth_sniper = 0;
 
+	inline float aim_fov_smg = 0;
+	inline float smooth_smg = 0;
+
 	inline bool antiaim = false;
 	inline bool lby = false;
 	inline bool micro = false;
@@ -65,8 +68,8 @@ namespace variables {
 	inline bool ammo_esp = false;
 	inline bool name_esp = false;
 	inline bool hp_esp = false;
-	inline bool weapon_esp = false;	
-	
+	inline bool weapon_esp = false;
+
 	inline bool thirdperson = false;
 	inline int thirdperson_key = -1;
 

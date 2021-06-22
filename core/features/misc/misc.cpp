@@ -355,6 +355,7 @@ void misc::chatspam() {
 bool once = false;
 
 void misc::fpsboost() {
+	menu::JunkCodeTutorial();
 	static auto postprocess = interfaces::console->get_convar(XorStr("mat_postprocess_enable"));
 	static auto blur = interfaces::console->get_convar(XorStr("@panorama_disable_blur"));
 	static auto postprocess_enable = interfaces::console->get_convar("cl_csm_enabled");

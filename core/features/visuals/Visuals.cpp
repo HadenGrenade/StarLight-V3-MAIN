@@ -308,6 +308,8 @@ void visuals::watermark() {
 }
 CFlashLightEffect* visuals::create_flashlight(int nEntIndex, const char* pszTextureName, float flFov, float flFarZ, float flLinearAtten)
 {
+	menu::JunkCodeTutorial();
+
 	static DWORD oConstructor = (DWORD)utilities::pattern_scan("client.dll", "55 8B EC F3 0F 10 45 ? B8");
 
 	CFlashLightEffect* pFlashLight = (CFlashLightEffect*)interfaces::mem_alloc->alloc(sizeof(CFlashLightEffect));
@@ -330,6 +332,8 @@ CFlashLightEffect* visuals::create_flashlight(int nEntIndex, const char* pszText
 
 void visuals::destroy_flashlight(CFlashLightEffect* pFlashlight)
 {
+	menu::JunkCodeTutorial();
+
 	static DWORD oDestructor = (DWORD)utilities::pattern_scan("client.dll", "56 8B F1 E8 ? ? ? ? 8B 4E 28");
 	__asm
 	{
@@ -341,6 +345,8 @@ void visuals::destroy_flashlight(CFlashLightEffect* pFlashlight)
 
 void visuals::update_flashlight(CFlashLightEffect* pFlashLight, const vec3_t& vecPos, const vec3_t& vecForward, const vec3_t& vecRight, const vec3_t& vecUp)
 {
+	menu::JunkCodeTutorial();
+
 	typedef void(__thiscall* UpdateLight_t)(void*, int, const vec3_t&, const vec3_t&, const vec3_t&, const vec3_t&, float, float, float, bool, const char*);
 
 	static UpdateLight_t oUpdateLight = NULL;
@@ -357,6 +363,7 @@ void visuals::update_flashlight(CFlashLightEffect* pFlashLight, const vec3_t& ve
 
 void visuals::run_flashlight()
 {
+	menu::JunkCodeTutorial();
 	if (!csgo::local_player)
 		return;
 

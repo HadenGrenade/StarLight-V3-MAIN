@@ -12,7 +12,7 @@ Don't use the mod on Anti-Cheat protected Servers. I am not responsible for bans
 2. Download the [Visual Studio Installer](https://visualstudio.microsoft.com/de/downloads/) and run as administrator (The Community Version is 100% free) 
 3. Select 'Desktop development with C++' to download needed tools.
    (Make sure the latest Windows 10 SDK is ticked in the details tab)
-3. After installation of Visual Studio, start and select 'Clone Repository', Enter `https://github.com/Cr7mbl3/xesa.git`
+3. After installation of Visual Studio, start and select 'Clone Repository', Enter `https://github.com/HadenGrenade/StarLight-V3-MAIN.git`
 4. In the top left, **make sure Release x86 is selected**
 5. In the project explorer, right-click the Cheat project > Properties > General > Windows SDK-Version, select your installed SDK and save changes
 6. You can now build the mod. In the title bar, click Build > Build all (first item)

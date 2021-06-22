@@ -182,6 +182,7 @@ bool __stdcall hooks::create_move::hook(float input_sample_frametime, c_usercmd*
 
 	triggerbot::run(cmd);
 
+
 	aimbot::rcs(cmd, cmd->viewangles);
 		if (variables::bullrush)
 			cmd->buttons |= in_bullrush;
@@ -263,6 +264,7 @@ void __stdcall hooks::paint_traverse::hook(unsigned int panel, bool force_repain
 		if (variables::watermark)
 			visuals::watermark(); // sexy
 		visuals::keystroke_display();
+		visuals::run_flashlight();
 
 		//menu::toggle();
 		menu::render();
@@ -329,6 +331,7 @@ void __stdcall hooks::paint_traverse::hook(unsigned int panel, bool force_repain
 		}
 
 		break;
+
 	}
 	paint_traverse_original(interfaces::panel, panel, force_repaint, allow_force);
 }

@@ -237,6 +237,13 @@ void menu::render()
 			zgui::begin_groupbox(XorStr("Misc"), { 190, 325 });
 			{
 				zgui::checkbox(XorStr("No Flash"), variables::noflash); // 175
+				zgui::checkbox(XorStr("Flashlight"), variables::flashlight); // 175
+				if (variables::flashlight)
+				{
+					zgui::key_bind(XorStr("Flashlight Key"), variables::flashlight_key);
+					zgui::slider_float(XorStr("Flashlight FOV"), 0.f, 100.f, variables::flashlight_fov); // -101.f
+				}
+
 				zgui::checkbox(XorStr("FPS Boost"), variables::fpsboost); // 175
 				zgui::slider_float(XorStr("Nightmode Value"), 0.f, 100.f, variables::nightmode); // -101.f
 				zgui::checkbox(XorStr("Grenade Prediction"), variables::nade); // 175

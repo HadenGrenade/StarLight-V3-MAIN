@@ -306,8 +306,92 @@ void visuals::watermark() {
 	render::draw_rect(bg_pos.x, bg_pos.y, bg_size.x, 2, col_accent); // Accent line
 	render::text(text_pos.x, text_pos.y, render::fonts::watermark_font, text, false, col_text); // Text
 }
+CFlashLightEffect* visuals::create_flashlight(int nEntIndex, const char* pszTextureName, float flFov, float flFarZ, float flLinearAtten)
+{
+	static DWORD oConstructor = (DWORD)utilities::pattern_scan("client.dll", "55 8B EC F3 0F 10 45 ? B8");
+
+	CFlashLightEffect* pFlashLight = (CFlashLightEffect*)interfaces::mem_alloc->alloc(sizeof(CFlashLightEffect));
+	if (!pFlashLight)
+		return NULL;
+
+	__asm
+	{
+		movss xmm3, flFov
+		mov ecx, pFlashLight
+		push flLinearAtten
+		push flFarZ
+		push pszTextureName
+		push nEntIndex
+		call oConstructor
+	}
+
+	return pFlashLight;
+}
+
+void visuals::destroy_flashlight(CFlashLightEffect* pFlashlight)
+{
+	static DWORD oDestructor = (DWORD)utilities::pattern_scan("client.dll", "56 8B F1 E8 ? ? ? ? 8B 4E 28");
+	__asm
+	{
+		mov ecx, pFlashlight
+		push ecx
+		call oDestructor
+	}
+}
+
+void visuals::update_flashlight(CFlashLightEffect* pFlashLight, const vec3_t& vecPos, const vec3_t& vecForward, const vec3_t& vecRight, const vec3_t& vecUp)
+{
+	typedef void(__thiscall* UpdateLight_t)(void*, int, const vec3_t&, const vec3_t&, const vec3_t&, const vec3_t&, float, float, float, bool, const char*);
+
+	static UpdateLight_t oUpdateLight = NULL;
+	if (!oUpdateLight)
+	{
+		DWORD callInstruction = (DWORD)utilities::pattern_scan("client.dll", "E8 ? ? ? ? 8B 06 F3 0F 10 46"); // get the instruction address
+		DWORD relativeAddress = *(DWORD*)(callInstruction + 1); // read the rel32
+		DWORD nextInstruction = callInstruction + 5; // get the address of next instruction
+		oUpdateLight = (UpdateLight_t)(nextInstruction + relativeAddress); // our function address will be nextInstruction + relativeAddress
+	}
+
+	oUpdateLight(pFlashLight, pFlashLight->m_nEntIndex, vecPos, vecForward, vecRight, vecUp, pFlashLight->m_flFov, pFlashLight->m_flFarZ, pFlashLight->m_flLinearAtten, pFlashLight->m_bCastsShadows, pFlashLight->m_szTextureName);
+}
+
+void visuals::run_flashlight()
+{
+	if (!csgo::local_player)
+		return;
+
+	static CFlashLightEffect* pFlashLight = NULL;
+	if (!(variables::flashlight)) {
+		pFlashLight = NULL;
+		return;
+	}
+
+	if (variables::flashlight_key)
+	{
+		if (!pFlashLight)
+			pFlashLight = create_flashlight(csgo::local_player->index(), "effects/flashlight001", variables::flashlight_fov, 1000, 1000);
+		else
+		{
+			destroy_flashlight(pFlashLight);
+			pFlashLight = NULL;
+		}
+	}
+
+	if (pFlashLight)
+	{
+		vec3_t f, r, u;
+		vec3_t viewAngles;
+
+		interfaces::engine->get_view_angles(viewAngles);
+		math::angle_vectors(viewAngles, &f, &r, &u);
+
+		pFlashLight->m_bIsOn = true;
+		pFlashLight->m_bCastsShadows = false;
+		pFlashLight->m_flFov = variables::flashlight_fov;
+		update_flashlight(pFlashLight, csgo::local_player->get_eye_pos(), f, r, u);
+	}
+}
 void visuals::Draw1() {
-	// Doesn't work right now but will fix soon
 	if (variables::wasd)
 	{
 		render::draw_filled_rect(10, 300 + 300, 30, 35, color::red(220));

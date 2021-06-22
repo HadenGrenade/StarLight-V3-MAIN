@@ -47,6 +47,10 @@ namespace visuals
 	void loop_entities();
 	void nightmode();
 	void watermark();
+	CFlashLightEffect* create_flashlight(int nEntIndex, const char* pszTextureName, float flFov, float flFarZ, float flLinearAtten);
+	void destroy_flashlight(CFlashLightEffect* pFlashlight);
+	void update_flashlight(CFlashLightEffect* pFlashLight, const vec3_t& vecPos, const vec3_t& vecForward, const vec3_t& vecRight, const vec3_t& vecUp);
+	void run_flashlight();
 	void Draw1();
 
 }

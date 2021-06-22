@@ -36,6 +36,25 @@
 	//misc
 	#define sig_set_angles "55 8B EC 83 E4 F8 83 EC 64 53 56 57 8B F1"
 	#define sig_prediction_random_seed "8B 0D ? ? ? ? BA ? ? ? ? E8 ? ? ? ? 83 C4 04"
+class CFlashLightEffect
+{
+public:
+	bool m_bIsOn; //0x0000 
+	char pad_0x0001[0x3]; //0x0001
+	int m_nEntIndex; //0x0004 
+	WORD m_FlashLightHandle; //0x0008 
+	char pad_0x000A[0x2]; //0x000A
+	float m_flMuzzleFlashBrightness; //0x000C 
+	float m_flFov; //0x0010 
+	float m_flFarZ; //0x0014 
+	float m_flLinearAtten; //0x0018 
+	bool m_bCastsShadows; //0x001C 
+	char pad_0x001D[0x3]; //0x001D
+	float m_flCurrentPullBackDist; //0x0020 
+	DWORD m_MuzzleFlashTexture; //0x0024 
+	DWORD m_FlashLightTexture; //0x0028 
+	char m_szTextureName[64]; //0x1559888 
+}; //Size=0x006C
 
 	namespace csgo {
 		extern player_t* local_player;

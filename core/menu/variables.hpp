@@ -161,6 +161,10 @@ namespace variables {
 	inline float rcs_x = 0;
 	inline bool lbunny = 0;  // legit bunny
 	inline bool pbunny = 0;  // perfect bunny
+	inline bool flashlight = 0;
+	inline int flashlight_key = 0;
+	inline float flashlight_fov = 0;
+
 	namespace menu {
 		inline bool opened = false;
 		inline int x = 190, y = 250;

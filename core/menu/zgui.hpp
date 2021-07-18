@@ -254,7 +254,7 @@ namespace zgui {
                 {190, '.',  '>'},
                 {191, '/',  '?'}
         };
-        
+
         // Color definition. Can be changed at any time just simply by editing this struct.
         static struct {
             color window_border_fill{ 5, 5, 255, 255 };

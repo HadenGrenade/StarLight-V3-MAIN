@@ -9,5 +9,5 @@ namespace menu_framework {
 	void menu_movement(std::int32_t& x, std::int32_t& y, std::int32_t w, std::int32_t h);
 
 	inline bool should_drag = false;
-	inline bool should_move = false; 
+	inline bool should_move = false;
 };

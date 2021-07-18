@@ -184,8 +184,8 @@ bool __stdcall hooks::create_move::hook(float input_sample_frametime, c_usercmd*
 
 
 	aimbot::rcs(cmd, cmd->viewangles);
-		if (variables::bullrush)
-			cmd->buttons |= in_bullrush;
+	if (variables::bullrush)
+		cmd->buttons |= in_bullrush;
 
 	prediction::start(cmd); {
 

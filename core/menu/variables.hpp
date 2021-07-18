@@ -164,10 +164,83 @@ namespace variables {
 	inline bool flashlight = 0;
 	inline int flashlight_key = 0;
 	inline float flashlight_fov = 0;
+	inline bool ragebot = 0;
+
+
+
+
+
+
+
+
+
+
+
+
+	//aimbot
+
+
+	inline bool pistol = 0;
+	inline bool sniper = 0;
+	inline bool ak = 0;
+	inline bool smg = 0;
+
 
 	namespace menu {
 		inline bool opened = false;
-		inline int x = 190, y = 250;
-		inline int w = 400, h = 300; // 400, 300
+		inline int x = 140, y = 140;
+		inline int w = 650, h = 450;
+		inline int scale = 0;
+		inline int item_line_offset = 0;
+		inline int active_tab = 0;
+		namespace buttons
+		{
+			inline bool testbutton = false;
+		}
+
+		namespace colorpickers
+		{
+			inline bool espoverrideopened = false;
+
+			inline bool visibleopened = false;
+			inline bool xqzopened = false;
+
+			inline bool backtrackopen = false;
+
+		}
+
+		namespace binds
+		{
+			inline bool aimbotselection = false;
+		}
+
+		namespace tabs
+		{
+			inline bool legit_pistols = true;
+			inline bool legit_smgs = false;
+			inline bool legit_rifles = false;
+			inline bool legit_snipers = false;
+		}
+
+		namespace combos
+		{
+			inline bool pistol_priority = false;
+			inline bool smg_priority = false;
+			inline bool rifle_priority = false;
+			inline bool sniper_priority = false;
+			inline bool pistol_trigger_slection = false;
+			inline bool smg_trigger_slection = false;
+			inline bool rifle_trigger_slection = false;
+			inline bool sniper_trigger_slection = false;
+
+			inline bool flag_selection = false;
+			inline bool visible_material_selection = false;
+			inline bool xqz_material_selection = false;
+
+			inline bool clantag_selection = false;
+			inline bool bhop_selection = false;
+
+			inline bool config_selection = false;
+		}
 	}
 }

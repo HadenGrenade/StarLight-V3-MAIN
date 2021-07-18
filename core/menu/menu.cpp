@@ -18,28 +18,30 @@ void menu::render()
 	zgui::poll_input("Counter-Strike: Global Offensive");
 	JunkCodeTutorial();
 	//junkcode::call();
-	static int MenuTab = 1;
+	static int MenuTab = 1; 
 	static int VisualsTab = 0;
+	static int LegitTab = 0;
 	static int RageTab = 0;
 	static int SkinTab = 0;
 	variables::menu::opened = false;
-	if (zgui::begin_window("", { 405, 398 }, render::fonts::watermark_font)) // 500, 365
+	if (zgui::begin_window("", { 500, 425 }, render::fonts::watermark_font)) // 500, 365
 	{
 		variables::menu::opened = true;
 
-		zgui::begin_groupbox(XorStr("Starlight"), { 385, 42 });
+		zgui::begin_groupbox(XorStr("Starlight"), { 482, 42 });
 		{
-
-			if (zgui::tab_button(XorStr("Aim#tab"), { 80, 20 })) MenuTab = 1;
+			if (zgui::tab_button(XorStr("Rage#tab"), { 80, 20 })) MenuTab = 0;
 			zgui::next_column(100, 17.5);
+			if (zgui::tab_button(XorStr("Aim#tab"), { 80, 20 })) MenuTab = 1;
+			zgui::next_column(200, 17.5);
 			if (zgui::tab_button(XorStr("Visuals#tab"), { 80, 20 })) MenuTab = 2;
-			if (MenuTab == 2)
+			if (MenuTab == 3)
 			{
 				VisualsTab = 0;
 			}
-			zgui::next_column(200, 17.5);
-			if (zgui::tab_button(XorStr("Misc#tab"), { 80, 20 })) MenuTab = 3;
 			zgui::next_column(300, 17.5);
+			if (zgui::tab_button(XorStr("Misc#tab"), { 80, 20 })) MenuTab = 3;
+			zgui::next_column(400, 17.5);
 			if (zgui::tab_button(XorStr("Skins#tab"), { 80, 20 })) MenuTab = 4;
 			if (MenuTab == 4)
 			{
@@ -52,50 +54,42 @@ void menu::render()
 		{
 			if (RageTab == 0) {
 
-				zgui::begin_groupbox(XorStr("Aimbot"), { 190,150 });
+				zgui::begin_groupbox(XorStr("Aimbot"), { 280,350 });
 				{
-					zgui::end_groupbox();
-				}
+				
+					zgui::checkbox(XorStr("RageBot Activate"), variables::aimbot); // 
+					zgui::key_bind(XorStr("KEY"), variables::onkey); // 
+					zgui::checkbox(XorStr("Visible Only"), variables::aimbot_isvisiblecheck); // 
+					zgui::checkbox(XorStr("Silent"), variables::silent); // 
+					zgui::checkbox(XorStr("TeamCheck "), variables::teamcheck); // 
+					zgui::checkbox(XorStr("AutoShoot "), variables::autoshoot); // 
+					zgui::checkbox(XorStr("AutoScope "), variables::autoscope); // 
 
-				zgui::begin_groupbox(XorStr("Autosniper Settings"), { 190,48 });
-				{
-					zgui::end_groupbox();
-				}
-				zgui::begin_groupbox(XorStr("Scout Settings"), { 190,48 });
-				{
-					zgui::end_groupbox();
-				}
-				zgui::begin_groupbox(XorStr("AWP Settings"), { 190,48 });
-				{
-					zgui::end_groupbox();
-				}
-				zgui::next_column(289, 0);
-				zgui::begin_groupbox(XorStr("Pistol Settings"), { 190,48 });
-				{
-					zgui::end_groupbox();
-				}
-				zgui::begin_groupbox(XorStr("Deagle Settings"), { 190,48 });
-				{
-					zgui::end_groupbox();
-				}
-				zgui::begin_groupbox(XorStr("Other Settings"), { 190,48 });
-				{
+					zgui::next_column(195, 45);
+					zgui::begin_groupbox(XorStr("AntiAim"), { 286,350 });
+					{
+
+						zgui::checkbox(XorStr("AntiAim"), variables::antiaim);
+
+						const std::vector<zgui::multi_select_item> AACombo{ {XorStr("LBY"), &variables::lby},
+						{ XorStr("Micromovements"), &variables::micro } };
+
+						zgui::multi_combobox(XorStr("AA Additions"), AACombo);
+
+						zgui::end_groupbox();
+					}
 					zgui::end_groupbox();
 				}
 			}
-			else if (RageTab == 1) {
-				zgui::begin_groupbox(XorStr("Antiaim"), { 191,205 });
-				{
-					zgui::end_groupbox();
-				}
-			}
+			
 		}
 		else if (MenuTab == 1)
 		{
 			JunkCodeTutorial();
 
-			zgui::begin_groupbox(XorStr("Aimbot"), { 190, 325 });
+			zgui::begin_groupbox(XorStr("Aimbot"), { 286, 350 });
 			{
+
 				zgui::checkbox(XorStr("Aimbot"), variables::aimbot); // 175
 
 				if (variables::aimbot)
@@ -131,20 +125,12 @@ void menu::render()
 						zgui::slider_float(XorStr("RCS X"), 0.f, 1.f, variables::rcs_y);
 					}
 
-					zgui::checkbox(XorStr("AntiAim"), variables::antiaim);
-
-					const std::vector<zgui::multi_select_item> AACombo{ {XorStr("LBY"), &variables::lby},
-					{ XorStr("Micromovements"), &variables::micro } };
-
-					zgui::multi_combobox(XorStr("AA Additions"), AACombo);
-
-
 				}
 
 			}
 
 			zgui::next_column(195, 45);
-			zgui::begin_groupbox(XorStr("Triggerbot"), { 190, 325 });
+			zgui::begin_groupbox(XorStr("Triggerbot"), { 286, 350 });
 			zgui::checkbox(XorStr("Triggerbot"), variables::triggerbot);
 			if (variables::triggerbot)
 			{
@@ -169,7 +155,7 @@ void menu::render()
 
 			if (VisualsTab == 0)
 			{
-				zgui::begin_groupbox(XorStr("Enemies"), { 190, 325 });
+				zgui::begin_groupbox(XorStr("Enemies"), { 286, 350 });
 				{
 					zgui::checkbox(XorStr("ESP"), variables::esp);
 					if (variables::esp) {
@@ -195,7 +181,7 @@ void menu::render()
 				}
 				zgui::next_column(195, 45);
 
-				zgui::begin_groupbox(XorStr("Localplayer"), { 191, 240.75 });
+				zgui::begin_groupbox(XorStr("Localplayer"), { 286, 240.75 });
 				{
 					zgui::checkbox(XorStr("Thirdperson"), variables::thirdperson);
 					zgui::key_bind(XorStr("Thirdperson Key"), variables::thirdperson_key);
@@ -211,7 +197,7 @@ void menu::render()
 					zgui::end_groupbox();
 				}
 
-				zgui::begin_groupbox(XorStr("Misc"), { 191, 81.25 });
+				zgui::begin_groupbox(XorStr("Misc"), { 286, 104.75 });
 				{
 					zgui::checkbox(XorStr("Backtrack"), variables::backtrack_chams);
 					zgui::colorpicker(XorStr("Chams Color#bt"), variables::Chams_Color_BT);
@@ -220,13 +206,13 @@ void menu::render()
 			}
 			else if (VisualsTab == 1)
 			{
-				zgui::begin_groupbox(XorStr("World"), { 190, 325 });
+				zgui::begin_groupbox(XorStr("World"), { 286, 350 });
 				{
 					zgui::end_groupbox();
 				}
 				zgui::next_column(289, 0);
 
-				zgui::begin_groupbox(XorStr("Misc"), { 191, 325 });
+				zgui::begin_groupbox(XorStr("Misc"), { 286, 350 });
 				{
 					zgui::end_groupbox();
 				}
@@ -234,7 +220,7 @@ void menu::render()
 		}
 		else if (MenuTab == 3)
 		{
-			zgui::begin_groupbox(XorStr("Misc"), { 190, 325 });
+			zgui::begin_groupbox(XorStr("Misc"), { 286, 350 });
 			{
 				zgui::checkbox(XorStr("No Flash"), variables::noflash); // 175
 				zgui::checkbox(XorStr("Flashlight"), variables::flashlight); // 175
@@ -260,7 +246,7 @@ void menu::render()
 			}
 			zgui::next_column(195, 45);
 
-			zgui::begin_groupbox("Movement", { 191, 325 });
+			zgui::begin_groupbox("Movement", { 286, 350 });
 			{
 				zgui::checkbox("Infinite Duck", variables::bullrush); // 175
 				zgui::checkbox("WASD ", variables::wasd); // 175 //
@@ -282,7 +268,7 @@ void menu::render()
 			JunkCodeTutorial();
 
 			if (SkinTab == 0) {
-				zgui::begin_groupbox("Skinchanger Main", { 385,325 });
+				zgui::begin_groupbox("Skinchanger Main", { 286, 350 });
 				{
 					zgui::combobox("Race", { "Default", "Black", "Mixed", "White", "Tan" }, variables::race);
 					zgui::checkbox("Enabled#skinchanger", variables::skinchanger);

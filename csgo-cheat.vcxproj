@@ -90,6 +90,7 @@
     <ClCompile Include="core\features\aimbot\aimbot.cpp" />
     <ClCompile Include="core\features\aimbot\anims.cpp" />
     <ClCompile Include="core\features\aimbot\antiaim.cpp" />
+    <ClCompile Include="core\features\aimbot\ragebot\ragebot.cpp" />
     <ClCompile Include="core\features\aimbot\rcs.cpp" />
     <ClCompile Include="core\features\aimbot\resolver.cpp" />
     <ClCompile Include="core\features\aimbot\triggerbot.cpp" />

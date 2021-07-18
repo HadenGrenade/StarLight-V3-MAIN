@@ -188,7 +188,6 @@ bool __stdcall hooks::create_move::hook(float input_sample_frametime, c_usercmd*
 		cmd->buttons |= in_bullrush;
 
 	prediction::start(cmd); {
-
 		misc::movement::edgeJump(cmd);
 		misc::movement::DoJumpBug(cmd);
 		misc::movement::edgebug(cmd);
@@ -200,6 +199,7 @@ bool __stdcall hooks::create_move::hook(float input_sample_frametime, c_usercmd*
 		backtracking::run(cmd);
 		aimbot::run(cmd);
 		antiaim::run(cmd);
+		ragebot::aimbot(cmd);
 		math::correct_movement(old_viewangles, cmd, old_forwardmove, old_sidemove);
 	} prediction::end();
 

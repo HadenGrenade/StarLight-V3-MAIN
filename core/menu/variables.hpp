@@ -32,6 +32,25 @@ namespace variables {
 
 	inline int weapon_config = 0;
 
+
+
+
+	// Ragebot
+	inline bool enableesp = false;
+	inline bool aimbot_isvisiblecheck = false;
+	inline bool silent = false;
+	inline bool autoshoot = false;
+	inline bool norecoil = true;
+	inline bool autoscope = false;
+	inline bool hitchance = false;
+	inline bool teamcheck = false;
+	inline bool team = false;
+	inline bool aimbot1 = false;
+	inline int onkey = -1;
+
+
+
+	//legitbot
 	inline bool rcs = false;
 	inline bool aimbot = false;
 	inline bool backtrack = false;
@@ -188,59 +207,10 @@ namespace variables {
 
 	namespace menu {
 		inline bool opened = false;
-		inline int x = 140, y = 140;
-		inline int w = 650, h = 450;
+		inline int x = 140, y = 175;
+		inline int w = 650, h = 625;
 		inline int scale = 0;
 		inline int item_line_offset = 0;
 		inline int active_tab = 0;
-		namespace buttons
-		{
-			inline bool testbutton = false;
-		}
-
-		namespace colorpickers
-		{
-			inline bool espoverrideopened = false;
-
-			inline bool visibleopened = false;
-			inline bool xqzopened = false;
-
-			inline bool backtrackopen = false;
-
-		}
-
-		namespace binds
-		{
-			inline bool aimbotselection = false;
-		}
-
-		namespace tabs
-		{
-			inline bool legit_pistols = true;
-			inline bool legit_smgs = false;
-			inline bool legit_rifles = false;
-			inline bool legit_snipers = false;
-		}
-
-		namespace combos
-		{
-			inline bool pistol_priority = false;
-			inline bool smg_priority = false;
-			inline bool rifle_priority = false;
-			inline bool sniper_priority = false;
-			inline bool pistol_trigger_slection = false;
-			inline bool smg_trigger_slection = false;
-			inline bool rifle_trigger_slection = false;
-			inline bool sniper_trigger_slection = false;
-
-			inline bool flag_selection = false;
-			inline bool visible_material_selection = false;
-			inline bool xqz_material_selection = false;
-
-			inline bool clantag_selection = false;
-			inline bool bhop_selection = false;
-
-			inline bool config_selection = false;
-		}
 	}
 }

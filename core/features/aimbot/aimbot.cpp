@@ -296,5 +296,7 @@ void aimbot::run(c_usercmd* cmd)
 		cmd->viewangles = final_angle;
 		if (ctx.mode != 2)
 			interfaces::engine->set_view_angles(cmd->viewangles);
+	
+
 	}
 }

@@ -1,5 +1,3 @@
-
-
 #pragma once
 #include "../../dependencies/utilities/csgo.hpp"
 #include "../menu/variables.hpp"
@@ -98,7 +96,11 @@ namespace chams {
 namespace glow {
 	void run();
 }
-
+namespace ragebot
+{
+	player_t* GetBestTarget(c_usercmd* cmd);
+	void aimbot(c_usercmd* cmd);
+}
 struct aimbot_ctx_t {
 	int mode;
 	int hitpoint;
@@ -111,6 +113,10 @@ struct aimbot_ctx_t {
 };
 
 namespace aimbot {
+	void run_aimbot(c_usercmd* cmd);
+	vec3_t calc_angle(const vec3_t& vecSource, const vec3_t& vecDestination);
+	vec3_t normalize(vec3_t angle);
+	float hitchance();
 	void rcs(c_usercmd* cmd, vec3_t& angles);
 	extern aimbot_ctx_t ctx;
 	void weapon_cfg(weapon_t* weapon);

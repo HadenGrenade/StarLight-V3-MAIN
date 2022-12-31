@@ -1,6 +1,9 @@
 [![Forks](https://img.shields.io/github/forks/Cr7mbl3/xesa.svg?style=for-the-badge)](https://github.com/thesexybeast23/StarLight-V3-MAIN/network/members)
 [![Issues](https://img.shields.io/github/issues/Cr7mbl3/xesa.svg?style=for-the-badge)](https://github.com/thesexybeast23/StarLight-V3-MAIN/issues)
 
+I am giving everyone this shit beacuse i havent worked on it in over a year. It used to be a P2C, then i stopped updating it. I started this development
+when i first started c++, so im obliged to tell you that the code is absolutley terrible consistently throughout the code, and i did use junk code for 'undetected means.'  Much of it is pasted and its NOT up to date. But i would say that wouldn't take longer than 30 minutes to fix with the IQ of a nazi.
+I'd also like to mention that the cheat actually isn't that bad. Has a partially working ragebot a lot of features, nice visuals and a TON of misk options with a really good resolver (mainly for legitbot but either way its very good). The legitbots alright.
 # Starlight
 Starlight is an internal mod for [Counter Strike: Global Offensive](https://blog.counter-strike.net/)
 
